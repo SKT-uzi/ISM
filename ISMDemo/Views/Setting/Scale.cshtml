@@ -1,0 +1,266 @@
+﻿@using ISMDemo.Utilities
+@using Microsoft.AspNetCore.Http
+@{
+    Layout = "CommonLayout";
+    string systemSettings = String.Empty;
+    string hideStep = String.Empty;
+    string configMode = Context.Session.GetString(Const.SESSION_CONFIG_MODE_NAME);
+    switch (configMode)
+    {
+        case Const.CONST_CONFIG_INIT:
+            systemSettings = String.Empty;
+            hideStep = String.Empty;
+            break;
+        case Const.CONST_CONFIG_UPDATE:
+            systemSettings = "system-settings";
+            hideStep = "hide";
+            break;
+    }
+}
+
+<body class="@systemSettings">
+    <main class="loading2">
+        <div class="main-left">
+            <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-default btn-previous-step" data-link="/@Configuration.ISMVirtualPath/Setting/Camera">
+                    <icon class="icon icon-back"></icon>
+                    <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 2</span>
+                </button>
+            </div>
+            <button data-page-level="2" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+        </div>
+        <div class="main-center">
+            <div data-page-level="1" class="main-status scale-status mt-m mt-l">
+                <div class="status-wrap">
+                    <icon class="status-icon icon icon-xxl icon-scale"></icon>
+                    <div class="status-title"></div>
+                    <div class="status-description"></div>
+                </div>
+                <ul class="box-list hide">
+                    <li data-toggle="settings-scale">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <icon class="icon icon-sm icon-first icon-checkmark-circle checked-status"></icon>
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["Scale_Title_Config"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status"></div>
+                                <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div data-page-level="2" class="main-settings scale-settings hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_Scale"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["Scale_Title_Config"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["Header_Title_Scale"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body  scale-main">
+                        <div class="section-box">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Common_SubTitle_Result"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="list-results">
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_CurrentItemWeight"]</strong>
+                                        <span class="default current-item-weight">@LocalizerHelper.LocalizerResource["Common_PlaceHolder_WaitForResult"]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottom-tips">
+                            <icon class="icon icon-xs icon-tips"></icon>
+                            <span>@LocalizerHelper.LocalizerResource["Scale_Desc_Result"]</span>
+                        </div>
+                        <div class="section-box">
+                            <ul class="list-results">
+                                <li class="technical-information">
+                                    <strong>@LocalizerHelper.LocalizerResource["Scale_Label_TechnicalInformation"]</strong>
+                                    <div class="box-right">
+                                        <div >
+                                            <icon class="icon icon-sm icon-tech-status hide"></icon>
+                                        </div>
+                                        <icon class="icon icon-sm icon-arrow-right-gray"></icon>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="main-box-body scale-information hide">
+                        <div class="section-box">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Scale_Label_TechnicalInformation"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="list-results">
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_Rate"]</strong> 
+                                        <span class="tag rate"> </span>
+                                    </li>
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_RawSerialMessage"]</strong>
+                                        <span style="white-space: pre-line" class="raw-serial"></span>
+                                    </li>
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_Baud"]</strong>
+                                        <span class="baud"></span>
+                                    </li>
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_Parity"]</strong>
+                                        <span class="parity"></span>
+                                    </li>
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["Scale_Label_Bits"]</strong>
+                                        <span class="bits"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottom-tips">
+                            <icon class="icon icon-xs icon-tips"></icon>
+                            <span>@LocalizerHelper.LocalizerResource["Scale_Label_Rate_Desc"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-primary btn-next-step" data-link="/@Configuration.ISMVirtualPath/Setting/EID">
+                    <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 4</span>
+                    <icon class="icon icon-next"></icon>
+                </button>
+            </div>
+            <button data-page-level="2" type="button" class="btn btn-circle btn-info hide" data-toggle="checked-not-done">
+                <span>@LocalizerHelper.LocalizerResource["Common_Button_Skip"]</span>
+            </button>
+            <button data-page-level="2" type="button" class="btn btn-circle btn-primary btn-done btn-disabled hide" data-toggle="checked-done">
+                <span>@LocalizerHelper.LocalizerResource["Common_Button_Done"]</span>
+            </button>
+        </div>
+    </main>
+
+    <div class="bottom-action">
+        <button class="btn btn-default btn-ghost btn-help" title="Language" data-toggle="need-help">
+            <icon class="icon icon-lg icon-help"></icon>
+            <span>@LocalizerHelper.LocalizerResource["Common_Label_NeedHelp"]</span>
+        </button>
+    </div>
+    <section class="panel panel-right panel-help">
+        <div class="panel-content">
+            <div class="panel-header">
+                <div class="panel-header-left">
+                    <div class="panel-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Help"]</div>
+                </div>
+                <div class="panel-header-right">
+                    <button class="btn btn-icon btn-default" data-toggle="close-panel">
+                        <icon class="icon icon-md icon-close-gray"></icon>
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body customized-scroll">
+                <div class="section-help-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Top_Question"]</div>
+                <div class="section-help-content">
+                    <ul class="top-question-list">
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_Scale_Q1"] </span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                                <ol class="lower-alpha">
+                                    <li>@LocalizerHelper.LocalizerResource["Help_Scale_Q1_Answer1"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_Scale_Q1_Answer2"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_Scale_Q1_Answer3"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_Scale_Q1_Answer4"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_Scale_Q1_Answer5"]</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_Scale_Q2"] </span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <p>@LocalizerHelper.LocalizerResource["Help_Scale_Q2_Answer1"]</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_Scale_Q3"] </span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <p>@LocalizerHelper.LocalizerResource["Help_Scale_Q3_Answer1"]</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_Scale_Q4"] </span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <p>@LocalizerHelper.LocalizerResource["Help_Scale_Q4_Answer1"]</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-us">
+                    <p>@LocalizerHelper.LocalizerResource["Help_Common_Desc_ContactUs"]</p>
+                    <ul>
+                        <li>
+                            <icon class="icon icon-xs icon-tel"></icon>
+                            <span>@Configuration.SupportLine.Replace("-", " - ")</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="modal modal-xl modal-message modal-message-fail" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-pic"><icon class="icon icon-xxl icon-alert"></icon></div>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="modal-message-tit">@LocalizerHelper.LocalizerResource["Common_Error_ConfigFailed"]</div>
+                    <p class="modal-message-content"></p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <input type="hidden" id="hidVisionConfigScaleSection" value="@ViewData["VisionConfigScaleSection"]" />
+    <input type="hidden" id="hidStepStatus" value="@ViewData["StepStatus"]" />
+</body>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/scale.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Scale.init();
+        });
+    </script>
+}

@@ -1,0 +1,580 @@
+﻿@using ISMDemo.Utilities
+@using Microsoft.AspNetCore.Http
+@{
+    Layout = "CommonLayout";
+    string systemSettings = String.Empty;
+    string hideStep = String.Empty;
+    string configMode = Context.Session.GetString(Const.SESSION_CONFIG_MODE_NAME);
+    switch (configMode)
+    {
+        case Const.CONST_CONFIG_INIT:
+            systemSettings = String.Empty;
+            hideStep = String.Empty;
+            break;
+        case Const.CONST_CONFIG_UPDATE:
+            systemSettings = "system-settings";
+            hideStep = "hide";
+            break;
+    }
+}
+
+<body class="@systemSettings">
+    <main class="loading2">
+        <div class="main-left">
+            <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-default btn-previous-step" data-link="/@Configuration.ISMVirtualPath/Setting/Scale">
+                    <icon class="icon icon-back"></icon>
+                    <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 3</span>
+                </button>
+            </div>
+            <button data-page-level="2" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+            <button data-page-level="3" data-id="settings-LF-EID-reader" data-target="settings-LF-EID" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+            <button data-page-level="3" data-id="settings-LF-EID-test" data-target="settings-LF-EID" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+            <button data-page-level="3" data-id="settings-UHF-EID-reader" data-target="settings-UHF-EID" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+            <button data-page-level="4" data-target="settings-LF-EID-test" type="button" class="btn btn-circle btn-default btn-back hide">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+            </button>
+        </div>
+        <div class="main-center">
+            <div data-page-level="1" class="main-status EID-status mt-s">
+                <div class="status-wrap">
+                    <icon class="status-icon icon icon-xxl icon-eid"></icon>
+                    <div class="status-title"></div>
+                    <div class="status-description">@LocalizerHelper.LocalizerResource["DeviceStatus_Error_EIDDisconnected_Desc_3"]</div>
+                </div>
+                <ul class="box-list">
+                    <li data-toggle="settings-LF-EID" data-target="settings-LF-EID">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status LF_EID-status"></div>
+                                <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-toggle="settings-UHF-EID" data-target="settings-UHF-EID">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_UHFEID"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status UHF_EID-status"></div>
+                                <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div data-page-level="2" data-id="settings-LF-EID" class="main-settings lf-eid-settings hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item" data-toggle="update-config-LF-EID">@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</div>
+                            </div>
+                            <div class="box-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="box-wrap box-wrap-sm">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Label_IsPaired"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-action">
+                                    <div class="group-radio-button group-radio-button-spe">
+                                        <div class="radio-button">
+                                            <input type="radio" name="LF-EID-IsPaired" id="LF-EID-IsPaired-Yes" value="yes">
+                                            <label for="LF-EID-IsPaired-Yes">@LocalizerHelper.LocalizerResource["EID_RadioButtonList_IsPaired"].ToString().Split('|')[0]</label>
+                                        </div>
+                                        <div class="radio-button">
+                                            <input type="radio" name="LF-EID-IsPaired" id="LF-EID-IsPaired-No" value="no">
+                                            <label for="LF-EID-IsPaired-No">@LocalizerHelper.LocalizerResource["EID_RadioButtonList_IsPaired"].ToString().Split('|')[1]</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-box-content section-box">
+                            <div class="section-box check-item hide">
+                                <div class="section-box-header">
+                                    <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["EID_Title_CheckList"]</strong></div>
+                                </div>
+                                <div class="section-box-content">
+                                    <ul class="box-list box-list-sm">
+                                        <li class="test-paired" data-toggle="test-Paired-EID" data-target="settings-LF-EID-reader">
+                                            <div class="box-wrap box-wrap-sm">
+                                                <div class="box-left">
+                                                    <icon class="icon icon-sm icon-first icon-checkmark-circle checked-status"></icon>
+                                                    <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</div>
+                                                </div>
+                                                <div class="box-right">
+                                                    <div class="box-status"></div>
+                                                    <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="section-box my-device hide">
+                                <div class="section-box-header">
+                                    <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["EID_Title_MyDevice"]</strong></div>
+                                </div>
+                                <div class="section-box-content">
+                                    <div class="box-wrap box-wrap-sm" data-toggle="settings-LF-EID-test" data-target="settings-LF-EID-test">
+                                        <div class="box-left">
+                                            <div class="box-item my-connected-device" name="bluetoothDevice"></div>
+                                        </div>
+                                        <div class="box-right">
+                                            <div class="box-status"></div>
+                                            <icon class="icon icon-sm icon-arrow-right-gray"></icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-box available-devices hide">
+                                <div class="section-box-header">
+                                    <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["EID_Title_AvailableDevices"]</strong></div>
+                                </div>
+                                <div class="section-box-content">
+                                    <ul class="list-devices customized-scroll" id="deviceList">
+                                        <li class="template hide"><span></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-tips hide">
+                            <icon class="icon icon-xl icon-warning"></icon>
+                            <span>@LocalizerHelper.LocalizerResource["EID_Waring_SelectConnectionMethod"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-page-level="2" data-id="settings-UHF-EID" class="main-settings uhf-eid-settings hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_UHFEID"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item" data-toggle="update-config-UHF-EID">@LocalizerHelper.LocalizerResource["EID_Title_UHFEID"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="section-box check-item hide">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["EID_Title_CheckList"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="box-list box-list-sm">
+                                    <li class="check-uhf">
+                                        <div class="box-wrap box-wrap-sm">
+                                            <div class="box-left">
+                                                <icon class="icon icon-sm icon-first icon-checkmark-circle checked"></icon>
+                                                <div class="box-item">
+                                                    @LocalizerHelper.LocalizerResource["EID_Title_ConnectionReader"]
+                                                </div>
+                                            </div>
+                                            <div class="box-right">
+                                                <div class="box-status"><span> @LocalizerHelper.LocalizerResource["Common_Button_Done"]</span></div>
+                                                <icon class="icon icon-sm icon-last icon-arrow-right-gray hide"></icon>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="test-UHF" data-toggle="test-UHF-EID" data-target="settings-UHF-EID-reader">
+                                        <div class="box-wrap box-wrap-sm">
+                                            <div class="box-left">
+                                                <icon class="icon icon-sm icon-first icon-checkmark-circle checked-status"></icon>
+                                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</div>
+                                            </div>
+                                            <div class="box-right">
+                                                <div class="box-status"></div>
+                                                <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-tips hide">
+                            <icon class="icon icon-xl icon-warning"></icon>
+                            <span>@LocalizerHelper.LocalizerResource["EID_Reminder_ConnectEIDReader"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-page-level="3" data-id="settings-LF-EID-test" class="main-settings test-lf-eid hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</li>
+                    <li name="bluetoothDevice"></li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item" name="bluetoothDevice"></div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="section-box check-item hide">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["EID_Title_CheckList"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="box-list box-list-sm">
+                                    <li class="test-bluetooth-eid" data-toggle="test-bluetooth-eid">
+                                        <div class="box-wrap box-wrap-sm">
+                                            <div class="box-left">
+                                                <icon class="icon icon-sm icon-first icon-checkmark-circle checked-status"></icon>
+                                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</div>
+                                            </div>
+                                            <div class="box-right">
+                                                <div class="box-status"></div>
+                                                <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-tips hide">
+                            <icon class="icon icon-xl icon-warning"></icon>
+                            <span>@LocalizerHelper.LocalizerResource["EID_Reminder_BluetoothConnect"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-page-level="3" data-id="settings-LF-EID-reader" class="main-settings test-lf-reader test-lf-reader-yes hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</div>
+                                <div class="box-item" name="PairedDevice"></div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="section-box">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Common_SubTitle_Result"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="list-results">
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["EID_Label_MostRecentEIDReadout"]</strong>
+                                        <span class="default lf-eid-reader">@LocalizerHelper.LocalizerResource["EID_Reader_ScanNewTag"]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="section-debug">
+                                <p>@LocalizerHelper.LocalizerResource["Try_NEW_Baud_Rate_Description"]</p>
+                                <button type="button" class="btn btn-sm btn-default btn-ghost btn-change-baudrate" data-toggle="try-new-baudrate">
+                                    <span>@LocalizerHelper.LocalizerResource["Try_New_Baud_Rate"]</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-default btn-ghost btn-updating hide">
+                                    <img src="/images/loading5.png" srcset="/images/loading5@2x.png 2x, /images/loading5@3x.png 3x" width="24" height="24" alt="">
+                                    <span>@LocalizerHelper.LocalizerResource["Updating"]</span>
+                                </button>
+                                <div class="tag hide">
+                                    <icon class="icon icon-sm icon-checked"></icon>
+                                    <span>@LocalizerHelper.LocalizerResource["Baud_Rate_Changed_Description"]</span>
+                                    <button type="button" class="btn btn-icon btn-default btn-no-padding" data-toggle="close-tag">
+                                        <icon class="icon icon-sm icon-close-sm"></icon>
+                                    </button>
+                                </div>
+                                <p><small>@LocalizerHelper.LocalizerResource["Current_Baud_Rate"]</small><small class="lf-eid-baud-rate">9600</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-page-level="3" data-id="settings-UHF-EID-reader" class="main-settings test-uhf-reader hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_UHFEID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item">@LocalizerHelper.LocalizerResource["EID_Title_UHFEID"]</div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status">@LocalizerHelper.LocalizerResource["DeviceStatus_Connected"]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="section-box">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Common_SubTitle_Result"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="list-results">
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["EID_Label_MostRecentEIDReadout"]</strong>
+                                        <span class="default uhf-eid-reader">@LocalizerHelper.LocalizerResource["EID_Reader_ScanNewTag"]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-page-level="4" class="main-settings test-lf-reader test-lf-reader-no hide">
+                <ul class="breadcrumb">
+                    <li>@LocalizerHelper.LocalizerResource["Header_Title_EID"]</li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_LFEID"]</li>
+                    <li name="bluetoothDevice"></li>
+                    <li>@LocalizerHelper.LocalizerResource["EID_Title_TestEID"]</li>
+                </ul>
+                <div class="main-box">
+                    <div class="main-box-header">
+                        <div class="box-wrap">
+                            <div class="box-left">
+                                <div class="box-item" name="bluetoothDevice"></div>
+                            </div>
+                            <div class="box-right">
+                                <div class="box-status">@LocalizerHelper.LocalizerResource["DeviceStatus_Connected"]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box-body">
+                        <div class="section-box">
+                            <div class="section-box-header">
+                                <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Common_SubTitle_Result"]</strong></div>
+                            </div>
+                            <div class="section-box-content">
+                                <ul class="list-results">
+                                    <li>
+                                        <strong>@LocalizerHelper.LocalizerResource["EID_Label_MostRecentEIDReadout"]</strong>
+                                        <span class="default lf-eid-reader">@LocalizerHelper.LocalizerResource["EID_Reader_ScanNewTag"]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="section-debug">
+                                <p>@LocalizerHelper.LocalizerResource["Try_NEW_Baud_Rate_Description"]</p>
+                                <button type="button" class="btn btn-sm btn-default btn-ghost btn-change-baudrate" data-toggle="try-new-baudrate">
+                                    <span>@LocalizerHelper.LocalizerResource["Try_New_Baud_Rate"]</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-default btn-ghost btn-updating hide">
+                                    <img src="/images/loading5.png" srcset="/images/loading5@2x.png 2x, /images/loading5@3x.png 3x" width="24" height="24" alt="">
+                                    <span>@LocalizerHelper.LocalizerResource["Updating"]</span>
+                                </button>
+                                <div class="tag hide">
+                                    <icon class="icon icon-sm icon-checked"></icon>
+                                    <span>@LocalizerHelper.LocalizerResource["Baud_Rate_Changed_Description"]</span>
+                                    <button type="button" class="btn btn-icon btn-default btn-no-padding" data-toggle="close-tag">
+                                        <icon class="icon icon-sm icon-close-sm"></icon>
+                                    </button>
+                                </div>
+                                <p><small>@LocalizerHelper.LocalizerResource["Current_Baud_Rate"]</small><small class="lf-eid-baud-rate">9600</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-primary btn-next-step" data-link="/@Configuration.ISMVirtualPath/Setting/Done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 5</span>
+                    <icon class="icon icon-next"></icon>
+                </button>
+            </div>
+            <div class="btn-group hide" data-page-level="3" data-id="settings-LF-EID-reader">
+                <button type="button" class="btn btn-circle btn-info" data-toggle="checked-not-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Skip"]</span>
+                </button>
+                <button type="button" class="btn btn-circle btn-primary btn-done btn-disabled" data-toggle="checked-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Done"]</span>
+                </button>
+            </div>
+            <div class="btn-group hide" data-page-level="3" data-id="settings-UHF-EID-reader">
+                <button type="button" class="btn btn-circle btn-info" data-toggle="checked-not-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Skip"]</span>
+                </button>
+                <button type="button" class="btn btn-circle btn-primary btn-done btn-disabled" data-toggle="checked-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Done"]</span>
+                </button>
+            </div>
+            <div class="btn-group hide" data-page-level="4" data-id="test-bluetooth-eid">
+                <button type="button" class="btn btn-circle btn-info" data-toggle="checked-not-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Skip"]</span>
+                </button>
+                <button type="button" class="btn btn-circle btn-primary btn-done btn-disabled" data-toggle="checked-done">
+                    <span>@LocalizerHelper.LocalizerResource["Common_Button_Done"]</span>
+                </button>
+            </div>
+        </div>
+    </main>
+    <div class="bottom-action">
+        <button class="btn btn-default btn-ghost btn-help" title="Language" data-toggle="need-help">
+            <icon class="icon icon-lg icon-help"></icon>
+            <span>@LocalizerHelper.LocalizerResource["Common_Label_NeedHelp"]</span>
+        </button>
+    </div>
+    <section class="panel panel-right panel-help">
+        <div class="panel-content">
+            <div class="panel-header">
+                <div class="panel-header-left">
+                    <div class="panel-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Help"]</div>
+                </div>
+                <div class="panel-header-right">
+                    <button class="btn btn-icon btn-default" data-toggle="close-panel">
+                        <icon class="icon icon-md icon-close-gray"></icon>
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body customized-scroll">
+                <div class="section-help-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Top_Question"]</div>
+                <div class="section-help-content">
+                    <ul class="top-question-list">
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1"]</span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                                <ol class="lower-alpha">
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1_Answer1"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1_Answer2"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1_Answer3"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1_Answer4"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q1_Answer5"]</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_LFEID_Q2"]</span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Try"]</h5>
+                                <ol class="lower-alpha">
+                                    <li>@LocalizerHelper.LocalizerResource["Help_LFEID_Q2_Answer1"]</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-question-desc">
+                                <span>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1"]</span>
+                                <icon class="icon icon-arrow-down"></icon>
+                            </div>
+                            <div class="top-question-answer">
+                                <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                                <ol class="lower-alpha">
+                                    <li>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1_Answer1"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1_Answer2"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1_Answer3"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1_Answer4"]</li>
+                                    <li>@LocalizerHelper.LocalizerResource["Help_UHFEID_Q1_Answer5"]</li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-us">
+                    <p>@LocalizerHelper.LocalizerResource["Help_Common_Desc_ContactUs"]</p>
+                    <ul>
+                        <li>
+                            <icon class="icon icon-xs icon-tel"></icon>
+                            <span>@Configuration.SupportLine.Replace("-", " - ")</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="modal modal-xl modal-message modal-lf-message-fail" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-pic"><icon class="icon icon-xxl icon-alert"></icon></div>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="modal-message-tit">@LocalizerHelper.LocalizerResource["Common_Error_ConfigFailed"]</div>
+                    <p class="modal-lf-message-content"></p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal modal-xl modal-message modal-uhf-message-fail" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-pic"><icon class="icon icon-xxl icon-alert"></icon></div>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="modal-message-tit">@LocalizerHelper.LocalizerResource["Common_Error_ConfigFailed"]</div>
+                    <p class="modal-uhf-message-content"></p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <input type="hidden" id="hidVisionConfigEIDSection" value="@ViewData["VisionConfigEIDSection"]" />
+    <input type="hidden" id="hidStepStatus" value="@ViewData["StepStatus"]" />
+    <input type="hidden" id="hidVisionConfigBaudRateList" value="@ViewData["VisionConfigBaudRateList"]" />
+</body>
+
+@section Scripts{
+    <script type="text/javascript" src="~/lib/echarts.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/eid.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            EID.init();
+        });
+    </script>
+}

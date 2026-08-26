@@ -1,0 +1,32 @@
+﻿@using ISMDemo.Utilities
+@{
+    Layout = "NoAuthLayout";
+}
+
+<body class="welcome">
+    <div class="welcome-bg"></div>
+    <main>
+        <div class="welcome-wrap">
+            <div class="welcome-text text-center">
+                <h1>
+                    @LocalizerHelper.LocalizerResource["Welcome_Main_Title"] <span>@LocalizerHelper.LocalizerResource["Common_SystemName"]</span>
+                </h1>
+                <h4>@LocalizerHelper.LocalizerResource["Welcome_Main_Desc"]</h4>
+            </div>
+	        <div class="welcome-action">
+                <button class="btn btn-md btn-primary" data-link="/@Configuration.ISMVirtualPath/Setting/Network">@LocalizerHelper.LocalizerResource["Welcome_Button_ISM"]</button>
+                <button class="btn btn-md btn-ghost btn-primary" data-link="@ViewData["ChuteSideAppUrl"]">@LocalizerHelper.LocalizerResource["Welcome_Button_ChuteSideApp"]</button>
+	        </div>			
+		</div>
+    </main>
+</body>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/welcome.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Welcome.init();
+        });
+    </script>
+}

@@ -1,0 +1,22 @@
+﻿@using ISMDemo.Utilities
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#ffffff">
+    <title>@LocalizerHelper.LocalizerResource["Common_AppName"] | @LocalizerHelper.LocalizerResource["Common_SystemName"]</title>
+    <link rel="icon" type="image/png" href="~/images/favicon.png" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout-ism.css" asp-append-version="true" />
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+</head>
+<body class="error-page">
+    <header></header>
+    <input type="hidden" id="hidISMVPath" value="@Configuration.ISMVirtualPath" />
+    @RenderBody()
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Visual Studio / .NET build output
+.vs/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+TestResults/
+artifacts/
+
+# NuGet restore output
+packages/
+*.nupkg
+*.snupkg
+
+# User-specific IDE files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs and runtime data
+*.log
+logs/
+RuntimeFiles/
+
+# Local configuration and credentials
+AppSettings.local.config
+appsettings.Local.json
+appsettings.*.Local.json
+.env
+.env.*
+!.env.example
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+

@@ -1,0 +1,36 @@
+﻿@using ISMDemo.Utilities
+@{
+    Layout = "NoAuthLayout";
+}
+
+<body class="welcome">
+    <main>
+        <div class="welcome-wrap welcome-wrap-2">
+            <div class="welcome-text text-center">
+                <icon class="icon icon-xxl icon-done"></icon>
+                <h2>@LocalizerHelper.LocalizerResource["InitDone_Desc_Success"].ToString().Split("||")[0]</h2>
+                <h4>@LocalizerHelper.LocalizerResource["InitDone_Desc_Success"].ToString().Split("||")[1]</h4>
+            </div>
+            <button id="btnInitDone" class="btn btn-md btn-primary">@LocalizerHelper.LocalizerResource["InitDone_Button_Start"]</button>
+        </div>
+    </main>
+</body>
+
+@section Scripts{
+    <script>
+        var chuteSideAppUrl = "@ViewData["ChuteSideAppUrl"]";
+        jQuery(document).ready(function () {
+            $(document).delegate("#btnInitDone", clickEvent, function () {
+                var isIframeEmbedded = window.self != window.top ? true : false;
+                callRoute_Normal("/Home/SignOut", "POST", null, function (result) {
+                }, function (errorMsg) {
+                });
+                if (isIframeEmbedded) {
+                    parent.postMessage("HideSystemSettings", "*");
+                } else {
+                    window.location.href = chuteSideAppUrl;
+                }
+            });
+        });
+    </script>
+}

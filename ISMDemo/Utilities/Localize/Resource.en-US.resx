@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+ <data name="AccessDenied_Button_SwitchAccount" xml:space="preserve">
+    <value>Use Another Account</value>
+  </data>
+  <data name="AccessDenied_Desc_1" xml:space="preserve">
+    <value>You do not have permission to access this page.</value>
+  </data>
+  <data name="AccessDenied_Desc_2" xml:space="preserve">
+    <value>Please refer to your system administrator.</value>
+  </data>  
+  <data name="AccessDenied_Title" xml:space="preserve">
+    <value>Access Denied</value>
+  </data>  
+  <data name="Camera_Tips_Connected" xml:space="preserve">
+    <value>Ok, you can configure/align the camera now!</value>
+  </data>
+  <data name="Camera_Tips_NotConnected" xml:space="preserve">
+    <value>Please connect the camera to the nano with the provided USB cable.</value>
+  </data>
+  <data name="Camera_Title_Alignment" xml:space="preserve">
+    <value>Camera Alignment</value>
+  </data>
+  <data name="Common_AppName" xml:space="preserve">
+    <value>Chute Side ISM</value>
+  </data>
+  <data name="Common_Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Common_Button_CheckAgain" xml:space="preserve">
+    <value>Check Again</value>
+  </data>
+  <data name="Common_Button_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Common_Button_GoBack" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="Common_Button_GotIt" xml:space="preserve">
+    <value>GOT IT</value>
+  </data> 
+  <data name="Common_Button_Skip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="Common_Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Common_Button_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data> 
+  <data name="Common_Error_ConfigFailed" xml:space="preserve">
+    <value>Config failed</value>
+  </data>  
+  <data name="Common_Error_ConfigFileNotExist" xml:space="preserve">
+    <value>The vision configuration file does not exist.</value>
+  </data>
+  <data name="Common_ErrorMsg_BadRequest" xml:space="preserve">
+    <value>An error occurred while processing your request.</value>
+  </data>
+  <data name="Common_ErrorMsg_Offline" xml:space="preserve">
+    <value>The network is disconnected. Please try again later.</value>
+  </data>
+  <data name="Common_ErrorMsg_StandardContent_1" xml:space="preserve">
+    <value>We are experiencing an internal server problem.</value>
+  </data>
+  <data name="Common_ErrorMsg_StandardContent_2" xml:space="preserve">
+    <value>Please click "Go Back" or "Go to Home Page" button below and try again.</value>
+  </data>    
+  <data name="Common_ErrorMsg_StandardMessage" xml:space="preserve">
+    <value>Something Went Wrong</value>
+  </data>
+  <data name="Common_ErrorMsg_StandardTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Common_ErrorMsg_Unknown" xml:space="preserve">
+    <value>An unknown error occurred. Please try again later.</value>
+  </data>
+  <data name="Common_Label_CompletionDate" xml:space="preserve">
+    <value>Completion Date:</value>
+  </data>
+  <data name="Common_Label_CustomerName" xml:space="preserve">
+    <value>Customer Name:</value>
+  </data>
+  <data name="Common_Label_DeviceID" xml:space="preserve">
+    <value>Device ID:</value>
+  </data>
+  <data name="Common_Label_DeviceIP" xml:space="preserve">
+    <value>Device IP:</value>
+  </data>
+  <data name="Common_Label_NeedHelp" xml:space="preserve">
+    <value>NEED HELP?</value>
+  </data>
+  <data name="Common_Label_None" xml:space="preserve">
+    <value>None</value>
+  </data>  
+  <data name="Common_Label_NotCompleted" xml:space="preserve">
+    <value>Not Completed</value>
+  </data>
+  <data name="Common_MsgBoxTitle_Error" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
+  <data name="Common_MsgBoxTitle_Reminder" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Common_MsgBoxTitle_Suc" xml:space="preserve">
+    <value>Successed</value>
+  </data>  
+  <data name="Common_NavigateButton_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Common_NavigateButton_Step" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="Common_PlaceHolder_WaitForResult" xml:space="preserve">
+    <value>Waiting for result</value>
+  </data>
+  <data name="Common_SubTitle_Result" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="Common_SystemName" xml:space="preserve">
+    <value>CattleSorting</value>
+  </data>
+  <data name="DeviceStatus_Connected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="DeviceStatus_Error_Button_CheckComplete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="DeviceStatus_Error_Button_ViewCheckMethod" xml:space="preserve">
+    <value>view check method</value>
+  </data>
+  <data name="DeviceStatus_Error_EIDDisconnected_CheckMethod_Items" xml:space="preserve">
+    <value>Is the device powered on?|Are the cables properly connected to the CattleSorting box?</value>
+  </data>
+  <data name="DeviceStatus_Error_EIDDisconnected_Desc_1" xml:space="preserve">
+    <value>Please check the EID reader.</value>
+  </data>
+  <data name="DeviceStatus_Error_EIDDisconnected_Desc_2" xml:space="preserve">
+    <value>The system will clear this message when the issue is resolved. If you have checked the items above and still have issues call the support line at {0}.</value>
+  </data>
+  <data name="DeviceStatus_Error_EIDDisconnected_Desc_3" xml:space="preserve">
+    <value>You can also set it later in the settings interface.</value>
+  </data>
+  <data name="DeviceStatus_Error_EIDDisconnected_Title" xml:space="preserve">
+    <value>EID reader is offline!</value>
+  </data>
+  <data name="DeviceStatus_Error_ScaleDisconnected_CheckMethod_Items" xml:space="preserve">
+    <value>Does the scale have power?|Check all cable on the scale and CattleSorting boxes.|Check that weights are being displayed on the scale.</value>
+  </data>
+  <data name="DeviceStatus_Error_ScaleDisconnected_Desc_1" xml:space="preserve">
+    <value>Please check the scale.</value>
+  </data>
+  <data name="DeviceStatus_Error_ScaleDisconnected_Desc_2" xml:space="preserve">
+    <value>The system will clear this message when the issue is resolved. If you have checked the items above and still have issues call the support line at {0}.</value>
+  </data>
+  <data name="DeviceStatus_Error_ScaleDisconnected_Desc_3" xml:space="preserve">
+    <value>Please connect the scale to the nano with the provided cable.</value>
+  </data>
+  <data name="DeviceStatus_Error_ScaleDisconnected_Title" xml:space="preserve">
+    <value>Weight scale is offline!</value>
+  </data>
+  <data name="DeviceStatus_NoInternet" xml:space="preserve">
+    <value>No Internet</value>
+  </data>
+  <data name="DeviceStatus_NotConnected" xml:space="preserve">
+    <value>Not Connected</value>
+  </data>
+  <data name="Device_Uptime" xml:space="preserve">
+    <value>Uptime:</value>
+  </data>
+  <data name="Done_Title_Completed" xml:space="preserve">
+    <value>All settings are complete!</value>
+  </data>
+  <data name="Done_Desc_Completed" xml:space="preserve">
+    <value>These settings can be modified later in the system settings interface.</value>
+  </data>
+  <data name="Done_Title_NotCompleted" xml:space="preserve">
+    <value>The following settings are not completed yet!</value>
+  </data>
+  <data name="Done_Desc_NotCompleted" xml:space="preserve">
+    <value>We recommend that you complete the below settings before processing, or you can do it later in the system settings.</value>
+  </data>
+  <data name="EID_Desc_ConnectionEID" xml:space="preserve">
+    <value>Connection of the EID</value>
+  </data>
+  <data name="EID_Desc_Result" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet consectetur. Risus ullamcorper proin amet gravida. Mi donec at nisi elementum a rhoncus cras velit.</value>
+  </data>
+  <data name="EID_Label_CheckAgain" xml:space="preserve">
+    <value>Check Again</value>
+  </data>
+  <data name="EID_Label_IsPaired" xml:space="preserve">
+    <value>Has the Firefly already been paired with the LF EID wand?</value>
+  </data>
+  <data name="EID_Label_MostRecentEIDReadout" xml:space="preserve">
+    <value>Most Recent EID Readout</value>
+  </data>
+  <data name="EID_Label_TestAgain" xml:space="preserve">
+    <value>Test Again</value>
+  </data>
+  <data name="EID_LoadingText_Checking" xml:space="preserve">
+    <value>Checking...</value>
+  </data>
+  <data name="EID_RadioButtonList_IsPaired" xml:space="preserve">
+    <value>Yes|No</value>
+  </data>
+  <data name="EID_Reminder_BluetoothConnect" xml:space="preserve">
+    <value>Please turn on the Bluetooth of the device to be connected and place it within the Bluetooth connectable range.</value>
+  </data>
+  <data name="EID_Reminder_ConnectEIDReader" xml:space="preserve">
+    <value>Please connect the EID Reader to the nano with the provided cable.</value>
+  </data>
+  <data name="EID_Reminder_DeviceConnect" xml:space="preserve">
+    <value>Please connect the device correctly and use the device to scan an ear tag.</value>
+  </data>
+  <data name="EID_Reminder_DeviceConnectFail" xml:space="preserve">
+    <value>Your device failed to connect.</value>
+  </data>
+  <data name="EID_Reminder_DeviceConnectSuc" xml:space="preserve">
+    <value>Your device has successfully connected.</value>
+  </data>
+  <data name="EID_Tips_Done" xml:space="preserve">
+    <value>Great, you have completed the EID configuration. Click the next step button to proceed to the next step.</value>
+  </data>
+  <data name="EID_Tips_NoLFEID" xml:space="preserve">
+    <value>You can continue to set up the Low-Frequency EID connection, or click the next step button to proceed to the next step.</value>
+  </data>
+  <data name="EID_Tips_NotDone" xml:space="preserve">
+    <value>You can also set it later in the settings interface.</value>
+  </data>
+  <data name="EID_Tips_NoUHFEID" xml:space="preserve">
+    <value>You can continue to set up the Ultra High-Frequency EID connection, or click the next step button to proceed to the next step.</value>
+  </data>
+  <data name="EID_Title_AvailableDevices" xml:space="preserve">
+    <value>Available Devices</value>
+  </data>
+  <data name="EID_Title_CheckList" xml:space="preserve">
+    <value>Please complete the following checklist:</value>
+  </data>
+  <data name="EID_Title_ConnectionReader" xml:space="preserve">
+    <value>Connection of the EID Reader</value>
+  </data>
+  <data name="EID_Title_LFEID" xml:space="preserve">
+    <value>Low-Frequency EID</value>
+  </data>
+  <data name="EID_Title_MyDevice" xml:space="preserve">
+    <value>My Device</value>
+  </data>
+  <data name="EID_Title_TestEID" xml:space="preserve">
+    <value>Test EID</value>
+  </data>
+  <data name="EID_Title_UHFEID" xml:space="preserve">
+    <value>Ultra High-Frequency EID</value>
+  </data>
+  <data name="EID_Waring_SelectConnectionMethod" xml:space="preserve">
+    <value>Please select the connection method first!</value>
+  </data>
+  <data name="EID_Label_NotCompleted" xml:space="preserve">
+    <value>Not Completed</value>
+  </data>
+  <data name="EID_Label_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="EID_Reader_ScanNewTag" xml:space="preserve">
+    <value>Scan new tag</value>
+  </data>
+  <data name="Try_NEW_Baud_Rate_Description" xml:space="preserve">
+    <value>If you can not get the EID readout. Please try to click below button to change Baud Rate and then scan the tag again. You can do this multiple times until it works.</value>
+  </data>
+  <data name="Try_New_Baud_Rate" xml:space="preserve">
+    <value>Try New Baud Rate</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating ...</value>
+  </data>
+  <data name="Baud_Rate_Changed_Description" xml:space="preserve">
+    <value>Baud rate has been changed. You can scan the tag now!</value>
+  </data>
+  <data name="Current_Baud_Rate" xml:space="preserve">
+    <value>Current Baud Rate:</value>
+  </data>
+  <data name="EID_Title_UHF_Connected" xml:space="preserve">
+    <value>UHF EID Connected</value>
+  </data>
+  <data name="EID_Title_UHF_NotConnected" xml:space="preserve">
+    <value>UHF EID Not Connected</value>
+  </data>
+  <data name="Enum_SecurityType" xml:space="preserve">
+    <value>{"1": "Open", "2": "WPA2 Personal"}</value>
+  </data>
+  <data name="Error_Button_GoHome" xml:space="preserve">
+    <value>Go to Home Page</value>
+  </data>
+  <data name="Header_ButtonTitle_SelLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>  
+  <data name="Header_Title_Camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="Header_Title_Camera_Description" xml:space="preserve">
+    <value>Connect to the camera</value>
+  </data>
+  <data name="Header_Title_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Header_Title_Done_Description" xml:space="preserve">
+    <value>Save and exit</value>
+  </data>	
+  <data name="Header_Title_EID" xml:space="preserve">
+    <value>EID</value>
+  </data>
+  <data name="Header_Title_EID_Description" xml:space="preserve">
+    <value>Connect to the EID equipment</value>
+  </data>
+  <data name="Header_Title_Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Header_Title_Network_Description" xml:space="preserve">
+    <value>Connect to the internet</value>
+  </data>
+  <data name="Header_Title_Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Header_Title_Password_Description" xml:space="preserve">
+    <value>Set Maintenance PW</value>
+  </data>
+  <data name="Header_Title_Password_Init" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Header_Title_Password_Update" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="Header_Title_Scale" xml:space="preserve">
+    <value>Weight Scale</value>
+  </data>
+  <data name="Header_Title_Scale_Description" xml:space="preserve">
+    <value>Connect to the weight scale</value>
+  </data>
+  <data name="Header_Title_SystemSettings" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Help_Camera_Q1" xml:space="preserve">
+    <value>Camera cannot connect?</value>
+  </data>  
+  <data name="Help_Camera_Q1_Answer1" xml:space="preserve">
+    <value>Remove the sticker from the camera lens.</value>
+  </data>
+  <data name="Help_Camera_Q1_Answer2" xml:space="preserve">
+    <value>Ensure the camera USB cable is securely plugged in to the Nano.</value>
+  </data> 
+  <data name="Help_Camera_Q1_Answer3" xml:space="preserve">
+    <value>If nothing else will work, use a spare camera to test connectivity.</value>
+  </data> 
+  <data name="Help_Camera_Q1_Answer4" xml:space="preserve">
+    <value>Call CattleSorting support if it still won’t connect.</value>
+  </data>
+  <data name="Help_Camera_Q2" xml:space="preserve">
+    <value>Any tips when calibrating distance to floor?</value>
+  </data>
+  <data name="Help_Camera_Q2_Answer1" xml:space="preserve">
+    <value>The chute should be set to the width that it is for processing. This usually means not too wide but not too narrow.</value>
+  </data>
+  <data name="Help_Camera_Q2_Answer2" xml:space="preserve">
+    <value>Do not include the side/wall of the chute when selecting the four corners of the floor.</value>
+  </data> 
+  <data name="Help_Camera_Q3" xml:space="preserve">
+    <value>What if I can’t calibrate distance to the floor?</value>
+  </data>
+  <data name="Help_Camera_Q3_Answer1" xml:space="preserve">
+    <value>Try measuring from camera lens to both high and low rungs on the floor mat.</value>
+  </data>
+  <data name="Help_Camera_Q3_Answer2" xml:space="preserve">
+    <value>Clean floor mat or remove debris if it has built up on the floor.</value>
+  </data> 
+  <data name="Help_Camera_Q3_Answer3" xml:space="preserve">
+    <value>If you still can’t calibrate then, call CattleSorting support.</value>
+  </data>
+  <data name="Help_Common_Desc_Check" xml:space="preserve">
+    <value>Please check the following:</value>
+  </data>
+  <data name="Help_Common_Desc_Try" xml:space="preserve">
+    <value>Please try:</value>
+  </data>
+  <data name="Help_Common_Desc_ContactUs" xml:space="preserve">
+    <value>If you can not address the problem based on above instructions, please contact us at:</value>
+  </data>
+  <data name="Help_Common_Title_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>  
+  <data name="Help_Common_Title_Top_Question" xml:space="preserve">
+    <value>Top Questions</value>
+  </data>
+  <data name="Help_LFEID_Q1" xml:space="preserve">
+    <value>LF EID cannot connect?</value>
+  </data>
+  <data name="Help_LFEID_Q1_Answer1" xml:space="preserve">
+    <value>Is the LF EID a wand (Bluetooth) or a direct RS232 connection? If direct RS232, then select "wand already connected to Firefly" and proceed to testing.</value>
+  </data>
+  <data name="Help_LFEID_Q1_Answer2" xml:space="preserve">
+    <value>Is the wand a "smart" wand meaning it can connect to Bluetooth from the wand itself? If so then use the wand to find and connect to the Firefly directly.</value>
+  </data>
+  <data name="Help_LFEID_Q1_Answer3" xml:space="preserve">
+    <value>Is the wand a "dumb" wand meaning it has no display? If so then use the installation module LF EID connection scan dialogue to scan and connect to the wand.</value>
+  </data>
+  <data name="Help_LFEID_Q1_Answer4" xml:space="preserve">
+    <value>Do you see more than one wand? Try to isolate the correct one first then turn off the other one(s).</value>
+  </data>
+  <data name="Help_LFEID_Q1_Answer5" xml:space="preserve">
+    <value>Test with a cell phone. Can your cell phone see both the wand and the CattleSorting system’s Bluetooth (should be named like FireFly_XXXX, where XXXX are some numbers)? If not, then troubleshoot the Bluetooth device that is not appearing.</value>
+  </data>
+  <data name="Help_LFEID_Q2" xml:space="preserve">
+    <value>Having trouble with Firefly?</value>
+  </data>
+  <data name="Help_LFEID_Q2_Answer1" xml:space="preserve">
+    <value>In some cases the Firefly cannot be put in Command Mode. The installer needs to be able to see the Firefly to check the green light on the Firefly if the system reports it cannot scan for Bluetooth devices or connect to a selected device.  The Firefly has 3 modes: Standby, Connected, and Command Mode. If the Firefly is in Standby the lights will flash once every 2 seconds. If the Firefly is Connected to a Bluetooth device, the light will remain solidly on. If the Firefly is in Command Mode, the lights flash quickly, several times a second. Sometimes the Firefly becomes stuck in Command Mode and the installer will need to physically reboot the Firefly if it continues flashing rapidly more than 2 minutes after last trying to configure the Firefly. If the Firefly still doesn't respond and remains in fast flashing mode, or immediately connects and will not enter Command Mode, flip it over and turn on DIP switch #1 before rebooting the Firefly and then toggle this DIP switch 2x to factory reset it, at which point you will see a brief flash on the light. For a Firefly that needs to connect to a wand (wand does not have the option to select a target), DIP switch #3 should be ON, all others OFF. For a Firefly that is selected by a wand, all DIP switches should be OFF.</value>
+  </data>
+  <data name="Help_Network_Q1" xml:space="preserve">
+    <value>Ethernet cannot connect?</value>
+  </data> 
+  <data name="Help_Network_Q1_Answer1" xml:space="preserve">
+    <value>Check the Ethernet cable and connection.</value>
+  </data>
+  <data name="Help_Network_Q1_Answer1_1" xml:space="preserve">
+    <value>Make sure the Ethernet cable is securely plugged into the Ethernet port on both your router and Nano. On your router, make sure the Ethernet cable is plugged into the correct Ethernet port – not the internet port that’s used to connect your modem and router.</value>
+  </data> 
+  <data name="Help_Network_Q1_Answer1_2" xml:space="preserve">
+    <value>If using Ethernet and the system dialogue reports the Ethernet is unplugged, check the cables between your facility’s equipment and the CattleSorting system. A cable tester or a separate cable is often the easiest way to test cabling. Your facility’s equipment should show a solid light on the Ethernet jack that is connected to the CattleSorting system, if this shows a solid light but the system dialogue still says Ethernet is not connected, contact CattleSorting support. It may also show a blinking light – solid light means connected, blinking means data is being sent successfully.</value>
+  </data> 
+  <data name="Help_Network_Q2" xml:space="preserve">
+    <value>Wifi cannot connect?</value>
+  </data>
+  <data name="Help_Network_Q2_Answer1" xml:space="preserve">
+    <value>Test on your cell phone.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer1_1" xml:space="preserve">
+    <value>If the WiFi network is showing up and works ok on your cell phone but still won’t connect to the CattleSorting system, then call CattleSorting support.</value>
+  </data> 
+  <data name="Help_Network_Q2_Answer1_2" xml:space="preserve">
+    <value>If the WiFi network is not working on your cell phone, then contact the feedyard for troubleshooting or follow the steps below.</value>
+  </data> 
+  <data name="Help_Network_Q2_Answer2" xml:space="preserve">
+    <value>Restart your modem and wireless router.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1" xml:space="preserve">
+    <value>This helps create a new connection to your internet service provider (ISP). When you do this, everyone that is connected to your Wi-Fi network will be temporarily disconnected. The steps you take to restart your modem and router can vary, but here are the general steps.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1_1" xml:space="preserve">
+    <value>Unplug the power cable for the router from the power source.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1_2" xml:space="preserve">
+    <value>Some modems have a backup battery. If you unplug the modem and the lights stay on, remove the battery from the modem.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1_3" xml:space="preserve">
+    <value>Wait at least 30 seconds or so. If you had to remove the battery from the modem, put it back in.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1_4" xml:space="preserve">
+    <value>Plug the modem back into the power source. The lights on the modem will blink. Wait for them to stop blinking.</value>
+  </data>
+  <data name="Help_Network_Q2_Answer2_1_5" xml:space="preserve">
+    <value>Plug your router back into the power source.</value>
+  </data>
+  <data name="Help_Network_Q3" xml:space="preserve">
+    <value>Slow Internet Connection?</value>
+  </data> 
+  <data name="Help_Network_Q3_Answer1_Desc1" xml:space="preserve">
+    <value>Please know:</value>
+  </data>
+  <data name="Help_Network_Q3_Answer1_Desc2" xml:space="preserve">
+    <value>CattleSorting can still function with a poor internet connection and you can complete onboarding, but this could cause hiccups and challenges during the installation period. If you need to contact support, be aware that it will be harder for us to remotely troubleshoot with a slow network connection.</value>
+  </data>
+  <data name="Help_Scale_Q1" xml:space="preserve">
+    <value>Weight scale cannot connect?</value>
+  </data>
+  <data name="Help_Scale_Q1_Answer1" xml:space="preserve">
+    <value>Verify scale head is on.</value>
+  </data>
+  <data name="Help_Scale_Q1_Answer2" xml:space="preserve">
+    <value>Ensure all cables are intact and undamaged. Any cut cables will need to be replaced by a scale technician before CattleSorting can operate.</value>
+  </data>
+  <data name="Help_Scale_Q1_Answer3" xml:space="preserve">
+    <value>Ensure the scale cable is securely connected to the tech box.</value>
+  </data>
+  <data name="Help_Scale_Q1_Answer4" xml:space="preserve">
+    <value>Try a null modem adapter.</value>
+  </data>
+  <data name="Help_Scale_Q1_Answer5" xml:space="preserve">
+    <value>The scale head may need to be configured. See next question.</value>
+  </data>  
+  <data name="Help_Scale_Q2" xml:space="preserve">
+    <value>Do certain scale heads need to be configured?</value>
+  </data>
+  <data name="Help_Scale_Q2_Answer1" xml:space="preserve">
+    <value>Yes, Avery Weigh-Tronix scale heads need to be manually configured by the scale tech before weight data can be sent to CattleSorting. There could be other scale heads that need manually configured, too.</value>
+  </data> 
+  <data name="Help_Scale_Q3" xml:space="preserve">
+    <value>What do I do if the rate is under 2 Hz?</value>
+  </data>
+  <data name="Help_Scale_Q3_Answer1" xml:space="preserve">
+    <value>Call a scale tech to adjust this setting. CattleSorting can receive weights when rate is between 1-1.9 Hz although this is not ideal. CattleSorting cannot use weights for sort decision if under 1.0 Hz.</value>
+  </data>
+  <data name="Help_Scale_Q4" xml:space="preserve">
+    <value>What is technical information?</value>
+  </data>
+  <data name="Help_Scale_Q4_Answer1" xml:space="preserve">
+    <value>Only rate is relevant to check. The other information is helpful for the scale tech to know, but it is not something that install team needs to check.</value>
+  </data>
+  <data name="Help_UHFEID_Q1" xml:space="preserve">
+    <value>UFH EID cannot connect?</value>
+  </data>
+  <data name="Help_UHFEID_Q1_Answer1" xml:space="preserve">
+    <value>The UHF should show connected. If not, follow the same diagnostics for ethernet network, except the equipment it is plugged into a "SharkTap" network splitter that may be located either in a protected box or in an enclosed room near the processing chute.</value>
+  </data>
+  <data name="Help_UHFEID_Q1_Answer2" xml:space="preserve">
+    <value>The SharkTap power light. Fix the power if not lit up.</value>
+  </data>
+  <data name="Help_UHFEID_Q1_Answer3" xml:space="preserve">
+    <value>All three Ethernet ports on the SharkTap should show a solid light and possibly also blinking lights.</value>
+  </data>
+  <data name="Help_UHFEID_Q1_Answer4" xml:space="preserve">
+    <value>See if any other equipment is also receiving UHF data. If not, there may be a problem with the UHF reader or its configuration and you should contact the provider of the UHF reader.</value>
+  </data>
+  <data name="Help_UHFEID_Q1_Answer5" xml:space="preserve">
+    <value>Check or replace cables. The two ports on opposite sides go to whatever equipment is reading and controlling the UHF reader, and the other goes to the UHF reader. The bottom/middle port goes to the CattleSorting system.</value>
+  </data>  
+  <data name="InitDone_Button_Start" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="InitDone_Desc_Success" xml:space="preserve">
+    <value>Your device has been set up successfully.||You can log in to the system and use our system to sort cattle.</value>
+  </data>
+  <data name="InvalidResolution_Button_OK" xml:space="preserve">
+    <value>Ok, I got it.</value>
+  </data>
+  <data name="InvalidResolution_Desc_1" xml:space="preserve">
+    <value>We noticed that your system resolution is under {0} px, which will not support well of the application.</value>
+  </data>
+  <data name="InvalidResolution_Desc_2" xml:space="preserve">
+    <value>We noticed that your current window width is less than {0} px. Please make your browser window bigger to have better view.</value>
+  </data>
+  <data name="InvalidResolution_Desc_IP" xml:space="preserve">
+    <value>Invalid IP Address</value>
+  </data>
+  <data name="InvalidResolution_Desc_SubnetMask" xml:space="preserve">
+    <value>Invalid Subnet Mask</value>
+  </data>
+  <data name="Live_Data" xml:space="preserve">
+    <value>Live Data</value>
+  </data>
+  <data name="Live_Data_Weight" xml:space="preserve">
+    <value>Weight (lbs)</value>
+  </data>
+  <data name="Live_Data_LF_EID" xml:space="preserve">
+    <value>LF EID</value>
+  </data>
+  <data name="Live_Data_UHF_EID" xml:space="preserve">
+    <value>UHF EID</value>
+  </data>
+  <data name="Login_Desc_TryAgain" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+  <data name="Login_Title_CattleSortingConfigSystem" xml:space="preserve">
+    <value>CattleSorting Configuration System</value>
+  </data>
+  <data name="Network_Label_Gateway" xml:space="preserve">
+    <value>Gateway</value>
+  </data>
+  <data name="Network_Label_IPAddress" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="Network_Label_IPAssignment" xml:space="preserve">
+    <value>IP Assignment</value>
+  </data>
+  <data name="Network_Label_MyNetworks" xml:space="preserve">
+    <value>My Network</value>
+  </data>
+  <data name="Network_Label_NetworkName" xml:space="preserve">
+    <value>Network Name</value>
+  </data>
+  <data name="Network_Label_SecurityKey" xml:space="preserve">
+    <value>Security Key</value>
+  </data>
+  <data name="Network_Label_SecurityType" xml:space="preserve">
+    <value>Security Type</value>
+  </data>
+  <data name="Network_Label_SubnetMask" xml:space="preserve">
+    <value>Subnet Mask</value>
+  </data>
+  <data name="Network_Message_Warning_SetUp_Wifi" xml:space="preserve">
+    <value>Please unplug ethernet cable first to setup WiFi network!</value>
+  </data>  
+  <data name="Network_Placeholder_EnterKey" xml:space="preserve">
+    <value>Enter Security Key</value>
+  </data>
+  <data name="Network_Placeholder_EnterName" xml:space="preserve">
+    <value>Enter Network Name</value>
+  </data>
+  <data name="Network_Placeholder_NoKey" xml:space="preserve">
+    <value>You don't need to enter a key</value>
+  </data>
+  <data name="Network_RadioButtonList_IPAssignment" xml:space="preserve">
+    <value>Automatic (DHCP)|Manual</value>
+  </data>
+  <data name="Network_Tips_Establish_Connectivity" xml:space="preserve">
+    <value>It may take 1-2 minutes for network connectivity to update once ethernet cable is plugged in or while establishing the WiFi connection.</value>
+  </data>	  
+  <data name="Network_Tips_NoEthernet_Init" xml:space="preserve">
+    <value>You can continue to set up the Ethernet connection, or click the next step button to proceed to the next step.</value>
+  </data>
+  <data name="Network_Tips_NoEthernet_Update" xml:space="preserve">
+    <value>You can continue to set up the Ethernet connection.</value>
+  </data>
+  <data name="Network_Tips_NotConnected" xml:space="preserve">
+    <value>You'll need an internet connection to continue setting up this device.</value>
+  </data>  
+  <data name="Network_Tips_NoWifi_Init" xml:space="preserve">
+    <value>You can continue to set up the Wi-Fi connection, or click the next step button to proceed to the next step.</value>
+  </data>
+  <data name="Network_Tips_NoWifi_Update" xml:space="preserve">
+    <value>You can continue to set up the Wi-Fi connection.</value>
+  </data>
+  <data name="Network_Title_AddNetwork" xml:space="preserve">
+    <value>Add New Network</value>
+  </data>
+  <data name="Network_Title_Details" xml:space="preserve">
+    <value>Network Connection Details</value>
+  </data>
+  <data name="Network_Title_EnterSecurityKey" xml:space="preserve">
+    <value>Enter the Network Security Key</value>
+  </data>
+  <data name="Network_Title_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="Network_Title_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="Network_Warning_Ethernet" xml:space="preserve">
+    <value>Please connect the network cable to the RJ45 port on the tech box.</value>
+  </data>
+  <data name="Network_Warning_Wifi" xml:space="preserve">
+    <value>Please make sure the current network is turned on.</value>
+  </data>
+  <data name="Overview_Label_LFEID" xml:space="preserve">
+    <value>LF</value>
+  </data>
+  <data name="Overview_Label_UHFEID" xml:space="preserve">
+    <value>UHF</value>
+  </data>
+  <data name="PageNotFound_Button_GoHome" xml:space="preserve">
+    <value>Go to Home Page</value>
+  </data>
+  <data name="PageNotFound_Desc_1" xml:space="preserve">
+    <value>This request is no longer available.</value>
+  </data>
+  <data name="PageNotFound_Desc_2" xml:space="preserve">
+    <value>Please reach out to your contact for more information.</value>
+  </data>
+  <data name="PageNotFound_Title" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="Password_Button_Back" xml:space="preserve">
+    <value>Back to Overview</value>
+  </data>
+  <data name="Password_Button_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Password_Button_Exit" xml:space="preserve">
+    <value>Exit Settings</value>
+  </data>
+  <data name="Password_Desc_EnterPassword" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
+  <data name="Password_Error_PwdIsEmpty" xml:space="preserve">
+    <value>The password is empty.</value>
+  </data>
+  <data name="Scale_Button_CheckAgain" xml:space="preserve">
+    <value>Check Again</value>
+  </data>
+  <data name="Scale_Desc_Connected" xml:space="preserve">
+    <value>Please test the scale by putting weight on it and confirming what you see on this display matches what you see on the scale head unit display.</value>
+  </data>
+  <data name="Scale_Desc_Result" xml:space="preserve">
+    <value>Make sure the "Current Item Weight" matches what you see on your scale head unit display before moving to the next step. Please contact technical support If no value is displayed.</value>
+  </data>
+  <data name="Scale_Label_CurrentItemWeight" xml:space="preserve">
+    <value>Current Item Weight</value>
+  </data>
+  <data name="Scale_Label_TechnicalInformation" xml:space="preserve">
+    <value>Technical Information</value>
+  </data>
+  <data name="Scale_Label_Rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="Scale_Label_RawSerialMessage" xml:space="preserve">
+    <value>Raw Serial Message</value>
+  </data>
+  <data name="Scale_Label_Baud" xml:space="preserve">
+    <value>Baud</value>
+  </data>
+  <data name="Scale_Label_Parity" xml:space="preserve">
+    <value>Parity</value>
+  </data>
+  <data name="Scale_Label_Bits" xml:space="preserve">
+    <value>Bits</value>
+  </data>
+  <data name="Scale_Title_Config" xml:space="preserve">
+    <value>Config/Test the Scale</value>
+  </data>
+  <data name="Scale_Label_Rate_Desc" xml:space="preserve">
+    <value>If rate is between 1-1.9 Hz we recommend calling a scale tech to adjust to 2 Hz. If the rate is 0.9 Hz or less then scale tech will need to change to 2 Hz before CattleSorting can operate.</value>
+  </data>
+  <data name="UnAuth_Button_GoLogin" xml:space="preserve">
+    <value>Go to Login Page</value>
+  </data>
+  <data name="UnAuth_Desc_1" xml:space="preserve">
+    <value>Your identity certificate is invalid.</value>
+  </data>
+  <data name="UnAuth_Desc_2" xml:space="preserve">
+    <value>Please return to the login page and verify again.</value>
+  </data>
+  <data name="UnAuth_Title" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
+  <data name="Validation_DangerChars" xml:space="preserve">
+    <value>This field can not contain illegal characters.</value>
+  </data>
+  <data name="Validation_FixLength" xml:space="preserve">
+    <value>Please enter {0} digits.</value>
+  </data>
+  <data name="Validation_LetterAndNumbers" xml:space="preserve">
+    <value>Please enter only letters and numbers.</value>
+  </data>    
+  <data name="Welcome_Button_ChuteSideApp" xml:space="preserve">
+    <value>CattleSorting Sort Chuteside Software</value>
+  </data>
+  <data name="Welcome_Button_ISM" xml:space="preserve">
+    <value>Installation Support Module</value>
+  </data>
+  <data name="Welcome_Main_Desc" xml:space="preserve">
+    <value>A hands-free, on-chute technology that provides cattle feeders data-driven results to help improve profitability.</value>
+  </data>
+  <data name="Welcome_Main_Title" xml:space="preserve">
+    <value>Welcome to</value>
+  </data>
+</root>

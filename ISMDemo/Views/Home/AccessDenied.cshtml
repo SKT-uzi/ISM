@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "InfoLayout";
+}
+
+<main>
+    <div class="error-wrap">
+        <div class="error-pic">
+            <div class="error-number">403</div>
+        </div>
+        <div class="error-title">@LocalizerHelper.LocalizerResource["AccessDenied_Title"]</div>
+        <div class="error-content">
+            @Html.Raw(LocalizerHelper.LocalizerResource["AccessDenied_Desc_1"])<br/>@Html.Raw(LocalizerHelper.LocalizerResource["AccessDenied_Desc_2"])
+        </div>
+        <div class="error-action">
+            <button class="btn btn-ghost btn-md btn-default hide" onclick="history.back(-1)">@LocalizerHelper.LocalizerResource["Common_Button_GoBack"]</button>
+            <button class="btn btn-md btn-primary" onclick="javascript:location.href='@Url.Action("SignOut", "Home")'">@LocalizerHelper.LocalizerResource["AccessDenied_Button_SwitchAccount"]</button>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,138 @@
+﻿@using ISMDemo.Auth
+@using Microsoft.AspNetCore.Authentication
+@using ISMDemo.Utilities
+@using System.Security.Claims
+
+@{
+    ClaimsIdentity identity;
+    bool isAuthenticated;
+    string firstName = string.Empty, lastName = string.Empty, shortName = string.Empty, fullName = string.Empty, deviceChuteName = string.Empty;
+
+    //string headerHideCls = string.Empty;
+    //string statusBarLeftCls = string.Empty;
+    //string standardHeaderCenterCls = string.Empty;
+    //string inProcessRunHeaderCenterCls = string.Empty;
+    string headerType = ViewData["HeaderType"].ToString();
+    string welcomeHeaderHideCls = string.Empty;
+    string initModeHeaderHideCls = string.Empty;
+    string updateModeHeaderHideCls = string.Empty;
+
+    switch (headerType)
+    {
+        case "NoAuth":
+            welcomeHeaderHideCls = string.Empty;
+            initModeHeaderHideCls = "hide";
+            updateModeHeaderHideCls = "hide";
+            break;
+        case Const.CONST_CONFIG_INIT:
+            welcomeHeaderHideCls = "hide";
+            initModeHeaderHideCls = string.Empty;
+            updateModeHeaderHideCls = "hide";
+            break;
+        case Const.CONST_CONFIG_UPDATE:
+            welcomeHeaderHideCls = "hide";
+            initModeHeaderHideCls = "hide";
+            updateModeHeaderHideCls = string.Empty;
+            break;
+    }
+}
+
+<div class="header-action @welcomeHeaderHideCls">
+    <button class="btn btn-icon btn-no-padding btn-primary btn-ghost" title="@LocalizerHelper.LocalizerResource["Header_ButtonTitle_SelLanguage"]" data-toggle="select-language">
+        <icon class="icon icon-lg icon-global"></icon>
+    </button>
+    @await Html.PartialAsync("PartialSelectLanguage")
+</div>
+
+<header id="headerInit" class="@initModeHeaderHideCls">
+    <div class="header-left">
+        <ul class="steps">
+            <li id="step-network">
+                <div class="step-icon">
+                    <span class="step-no">1</span>
+                    <icon class="icon icon-sm icon-checkmark"></icon>
+                </div>
+                <div class="step-text">
+                    <div class="step-title">@LocalizerHelper.LocalizerResource["Header_Title_Network"]</div>
+                    <div class="step-description">@LocalizerHelper.LocalizerResource["Header_Title_Network_Description"]</div>
+                </div>
+            </li>
+            <li id="step-camera">
+                <div class="step-icon">
+                    <span class="step-no">2</span>
+                    <icon class="icon icon-sm icon-checkmark"></icon>
+                </div>
+                <div class="step-text">
+                    <div class="step-title">@LocalizerHelper.LocalizerResource["Header_Title_Camera"]</div>
+                    <div class="step-description">@LocalizerHelper.LocalizerResource["Header_Title_Camera_Description"]</div>
+                </div>
+            </li>
+            <li id="step-scale">
+                <div class="step-icon">
+                    <span class="step-no">3</span>
+                    <icon class="icon icon-sm icon-checkmark"></icon>
+                </div>
+                <div class="step-text">
+                    <div class="step-title">@LocalizerHelper.LocalizerResource["Header_Title_Scale"]</div>
+                    <div class="step-description">@LocalizerHelper.LocalizerResource["Header_Title_Scale_Description"]</div>
+                </div>
+            </li>
+            <li id="step-EID">
+                <div class="step-icon">
+                    <span class="step-no">4</span>
+                    <icon class="icon icon-sm icon-checkmark"></icon>
+                </div>
+                <div class="step-text">
+                    <div class="step-title">@LocalizerHelper.LocalizerResource["Header_Title_EID"]</div>
+                    <div class="step-description">@LocalizerHelper.LocalizerResource["Header_Title_EID_Description"]</div>
+                </div>
+            </li>
+            <li id="step-done">
+                <div class="step-icon">
+                    <span class="step-no">5</span>
+                    <icon class="icon icon-sm icon-checkmark"></icon>
+                </div>
+                <div class="step-text">
+                    <div class="step-title">@LocalizerHelper.LocalizerResource["Header_Title_Done"]</div>
+                    <div class="step-description">@LocalizerHelper.LocalizerResource["Header_Title_Done_Description"]</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="header-right">
+        <div class="header-action">
+            <button class="btn btn-icon btn-no-padding btn-primary btn-ghost" title="@LocalizerHelper.LocalizerResource["Header_ButtonTitle_SelLanguage"]" data-toggle="select-language">
+                <icon class="icon icon-lg icon-global"></icon>
+            </button>
+            @await Html.PartialAsync("PartialSelectLanguage")
+        </div>
+        <button class="btn btn-icon btn-no-padding btn-primary btn-ghost" title="Exit Settings" data-toggle="exit-settings">
+            <icon class="icon icon-lg icon-close"></icon>
+        </button>
+    </div>
+</header>
+
+<header class="@updateModeHeaderHideCls">
+    <div class="header-left">
+        <div class="header-title">@LocalizerHelper.LocalizerResource["Header_Title_SystemSettings"]</div>
+        <nav class="header-nav">            
+            <a id="overview" href="/@Configuration.ISMVirtualPath/Setting/Overview">@LocalizerHelper.LocalizerResource["Header_Title_Overview"]</a>
+            <a id="network" href="/@Configuration.ISMVirtualPath/Setting/Network">@LocalizerHelper.LocalizerResource["Header_Title_Network"]</a>
+            <a id="camera" href="/@Configuration.ISMVirtualPath/Setting/Camera">@LocalizerHelper.LocalizerResource["Header_Title_Camera"]</a>
+            <a id="scale" href="/@Configuration.ISMVirtualPath/Setting/Scale">@LocalizerHelper.LocalizerResource["Header_Title_Scale"]</a>
+            <a id="EID" href="/@Configuration.ISMVirtualPath/Setting/EID">@LocalizerHelper.LocalizerResource["Header_Title_EID"]</a>
+        </nav>
+    </div>
+    <div class="header-right">
+        <div class="header-action">
+            <button class="btn btn-icon btn-no-padding btn-primary btn-ghost" title="@LocalizerHelper.LocalizerResource["Header_ButtonTitle_SelLanguage"]" data-toggle="select-language">
+                <icon class="icon icon-lg icon-global"></icon>
+            </button>
+            @await Html.PartialAsync("PartialSelectLanguage")
+        </div>
+        <button class="btn btn-icon btn-no-padding btn-primary btn-ghost" title="Exit Settings" data-toggle="exit-settings">
+            <icon class="icon icon-lg icon-close"></icon>
+        </button>
+    </div>
+</header>
+<li class="device-error-red-template hide" data-error-type=""></li>

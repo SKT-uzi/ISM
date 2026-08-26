@@ -1,0 +1,125 @@
+{
+  "EthernetConnected": {
+    "statusType": "ethernet",
+    "isConnected": true,
+    "internetAccessible": true
+  },
+  "EthernetDisconnected": {
+    "statusType": "ethernet",
+    "isConnected": false,
+    "internetAccessible": false
+  },
+  "EthernetConnectedNoInternet": {
+    "statusType": "ethernet",
+    "isConnected": true,
+    "internetAccessible": false
+  },
+  "WirelessConnected": {
+    "statusType": "wireless",
+    "isConnected": true,
+    "internetAccessible": true
+  },
+  "WirelessDisconnected": {
+    "statusType": "wireless",
+    "isConnected": false,
+    "internetAccessible": false
+  },
+  "WirelessConnectedNoInternet": {
+    "statusType": "wireless",
+    "isConnected": true,
+    "internetAccessible": false
+  },
+  "CameraOnline": {
+    "statusType": "camera",
+    "isConnected": true
+  },
+  "CameraOffline": {
+    "statusType": "camera",
+    "isConnected": false
+  },
+  "ScaleConnected": {
+    "statusType": "scale",
+    "isConnected": true
+  },
+  "ScaleDisconnected": {
+    "statusType": "scale",
+    "isConnected": false
+  },
+  "ScaleSuccess": {
+    "type": "scale",
+    "value": {
+      "status": "success",
+      "weight": 400,
+      "rawserial": "0.735,G  -5566  ,10-24-10,05:06:54 1.835,G  -5566  ,03-28-10,05:06:55 2.835,G  -5566  ,03-28-10,05:06:56",
+      "rate_HZ": 5,
+      "port": "/dev/ttySC1",
+      "baud": 6600,
+      "parity": "N",
+      "stop": 1,
+      "bits": 8,
+      "errorMessage": ""
+    }
+  },
+  "ScaleError": {
+    "type": "scale",
+    "value": {
+      "status": "error",
+      "weight": null,
+      "rawserial": "",
+      "rate_HZ": null,
+      "port": "",
+      "baud": null,
+      "parity": "",
+      "stop": null,
+      "bits": null,
+      "errorMessage": "error"
+    }
+  },
+  "LFEIDSuccess": {
+    "type": "LFEID",
+    "value": {
+      "status": "success",
+      "reader": "964001046781706",
+      "errorMessage": "",
+      "baud": 9600
+    }
+  },
+  "LFEIDError": {
+    "method": "response",
+    "type": "LFEID",
+    "args": "test",
+    "value": {
+      "status": "error",
+      "reader": "",
+      "errorMessage": "error"
+    }
+  },
+  "UHFEIDConnected": {
+    "statusType": "UHFEID",
+    "isConnected": true
+  },
+  "UHFEIDDisconnected": {
+    "statusType": "UHFEID",
+    "isConnected": false
+  },
+  "UHFEIDSuccess": {
+    "type": "UHFEID",
+    "value": {
+      "status": "success",
+      "reader": "964001046781704",
+      "errorMessage": ""
+    }
+  },
+  "UHFEIDError": {
+    "type": "UHFEID",
+    "value": {
+      "status": "error",
+      "reader": "",
+      "errorMessage": "error"
+    }
+  },
+  "DeviceHealth": {
+    "statusType": "system",
+    "value": { "uptime": 65582.25 }
+  }
+}

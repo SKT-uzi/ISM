@@ -1,0 +1,52 @@
+﻿@model ISMDemo.Models.ErrorViewModel
+@using ISMDemo.Utilities
+@{
+    Layout = "InfoLayout";
+}
+
+<main>
+    <div class="error-wrap">
+        <div class="error-pic">
+            <div class="error-number">@LocalizerHelper.LocalizerResource["Common_ErrorMsg_StandardTitle"]</div>
+        </div>
+        @if (Configuration.IsDebug  && !string.IsNullOrEmpty(@Model.ErrorMessage))
+        {
+            <div class="error-title">@Model.ErrorMessage</div>
+        }
+        else
+        {
+            <div class="error-title">@LocalizerHelper.LocalizerResource["Common_ErrorMsg_StandardMessage"]</div>
+        }
+
+        @if (Configuration.IsDebug && !string.IsNullOrEmpty(@Model.ErrorDetail))
+        {
+            <div class="error-content">@Html.Raw(Model.ErrorDetail)</div>
+        }
+        else
+        {
+            <div class="error-content">
+               @Html.Raw(LocalizerHelper.LocalizerResource["Common_ErrorMsg_StandardContent_1"])<br/>@Html.Raw(LocalizerHelper.LocalizerResource["Common_ErrorMsg_StandardContent_2"])
+            </div>
+        }
+
+        <div class="error-action">
+            <button class="btn btn-ghost btn-md btn-default" onclick="history.back(-1)">@LocalizerHelper.LocalizerResource["Common_Button_GoBack"]</button>
+            <button class="btn btn-md btn-primary btn-go-home">@LocalizerHelper.LocalizerResource["Error_Button_GoHome"]</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(function () {
+        // Go back to Home
+        $(document).delegate(".btn-go-home", "click", function () {
+            var isIframeEmbedded = window.self != window.top ? true : false;
+
+            if (isIframeEmbedded) {
+                parent.postMessage("HideSystemSettings", "*");
+            } else {
+                window.location.href = "/" + $("#hidISMVPath").val() + "/Home/Welcome";
+            }
+        });
+    });
+</script>

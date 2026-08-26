@@ -1,0 +1,101 @@
+﻿@using ISMDemo.Utilities
+@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json;
+@{
+    Layout = "CommonLayout";
+    StepStatus stepStatus = JsonConvert.DeserializeObject<StepStatus?>(ViewData["StepStatus"].ToString()) ?? new StepStatus();
+    string hideCamera = stepStatus.CameraCompleted ? "hide" : string.Empty;
+    string hideScale = stepStatus.ScaleCompleted ? "hide" : string.Empty;
+    string hideEID = stepStatus.EIDCompleted ? "hide" : string.Empty;
+}
+
+<body class="set-done">
+<main class="loading2">
+    <div class="main-left">
+        <div>
+                <button data-page-level="1" type="button" class="btn btn-circle btn-default btn-previous-step" data-link="/@Configuration.ISMVirtualPath/Setting/EID">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 4</span>
+            </button>
+        </div>
+    </div>
+    <div class="main-center">
+        <div class="main-status settings-completed hide">
+            <div class="status-wrap">
+                <icon class="status-icon icon icon-xxl icon-done"></icon>
+                <div class="status-title">@LocalizerHelper.LocalizerResource["Done_Title_Completed"]</div>
+                <div class="status-description">@LocalizerHelper.LocalizerResource["Done_Desc_Completed"]</div>
+            </div>
+        </div>
+        <div class="main-status settings-not-completed hide">
+            <div class="status-wrap">
+                <icon class="status-icon icon icon-xxl icon-alert"></icon>
+                <div class="status-title">@LocalizerHelper.LocalizerResource["Done_Title_NotCompleted"]</div>
+                <div class="status-description">@LocalizerHelper.LocalizerResource["Done_Desc_NotCompleted"]</div>
+            </div>
+            <ul class="box-list">
+                    <li data-link="/@Configuration.ISMVirtualPath/Setting/Network" class="network-not-completed hide">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Header_Title_Network"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status">@LocalizerHelper.LocalizerResource["Common_Label_NotCompleted"]</div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+                    <li data-link="/@Configuration.ISMVirtualPath/Setting/Camera" class="@hideCamera">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Header_Title_Camera"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status">@LocalizerHelper.LocalizerResource["Common_Label_NotCompleted"]</div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+                    <li data-link="/@Configuration.ISMVirtualPath/Setting/Scale" class="@hideScale">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Header_Title_Scale"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status">@LocalizerHelper.LocalizerResource["Common_Label_NotCompleted"]</div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+                    <li data-link="/@Configuration.ISMVirtualPath/Setting/EID" class="@hideEID">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Header_Title_EID"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status">@LocalizerHelper.LocalizerResource["Common_Label_NotCompleted"]</div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-right">
+        <button type="button" class="btn btn-circle btn-primary btn-next-step" data-toggle="checked-done">
+            <span>@LocalizerHelper.LocalizerResource["Common_Button_Done"]</span>
+        </button>
+    </div>
+</main>
+<input type="hidden" id="hidVisionConfigCameraSection" value="@ViewData["VisionConfigCameraSection"]" />
+<input type="hidden" id="hidStepStatus" value="@ViewData["StepStatus"]" />
+</body>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/done.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Done.init();
+        });
+    </script>
+}

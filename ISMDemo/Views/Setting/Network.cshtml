@@ -1,0 +1,454 @@
+﻿@using ISMDemo.Utilities
+@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json;
+@using static EnumDefinition;
+@{
+    Layout = "CommonLayout";
+    string systemSettings = String.Empty;
+    string hideStep = String.Empty;
+    string? configMode = Context.Session.GetString(Const.SESSION_CONFIG_MODE_NAME);
+    switch (configMode)
+    {
+        case Const.CONST_CONFIG_INIT:
+            systemSettings = String.Empty;
+            hideStep = String.Empty;
+            break;
+        case Const.CONST_CONFIG_UPDATE:
+            systemSettings = "system-settings";
+            hideStep = "hide";
+            break;
+    }
+    var serverConfigConsts = JsonConvert.SerializeObject(new ServerConfigConsts());
+    var enumSecurityTypes = EnumDefinition.GetEnums("Enum_SecurityType");
+}
+
+<body class="@systemSettings">
+<main class="loading2">
+    <div class="main-left">
+        <button data-page-level="2" type="button" class="btn btn-circle btn-default btn-back hide">
+            <icon class="icon icon-back"></icon>
+            <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+        </button>
+        <button data-page-level="3" type="button" class="btn btn-circle btn-default btn-back hide" data-target="settings-wifi">
+            <icon class="icon icon-back"></icon>
+            <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Back"]</span>
+        </button>
+    </div>
+    <div class="main-center customized-scroll">
+        <div data-page-level="1" class="main-status network-status mt-s">
+            <div class="status-wrap">
+                <icon class="status-icon icon icon-xxl icon-network"></icon>
+                <div class="status-title"></div>
+                <div class="status-description"></div>
+            </div>
+            <ul class="box-list">
+                <li data-toggle="settings-wifi" data-target="settings-wifi">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <icon class="icon icon-md icon-first icon-wifi"></icon>
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Network_Title_Wifi"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status wifi-status"></div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+                <li data-toggle="settings-ethernet" data-target="settings-ethernet">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <icon class="icon icon-md icon-first icon-ethernet"></icon>
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Network_Title_Ethernet"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status ethernet-status"></div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div data-page-level="2" data-id="settings-ethernet" class="main-settings ethernet-settings hide">
+            <ul class="breadcrumb">
+                <li>@LocalizerHelper.LocalizerResource["Header_Title_Network"]</li>
+                <li>@LocalizerHelper.LocalizerResource["Network_Title_Ethernet"]</li>
+            </ul>
+            <div class="main-box">
+                <div class="main-box-header">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <icon class="icon icon-md icon-first icon-ethernet"></icon>
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Network_Title_Ethernet"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-box-body">
+                    <div class="main-tips hide">
+                        <icon class="icon icon-xl icon-warning"></icon>
+                        <span>@LocalizerHelper.LocalizerResource["Network_Warning_Ethernet"]</span>
+                    </div>
+                    <div class="box-wrap box-wrap-sm hide">
+                        <div class="box-left">
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Network_Label_IPAssignment"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-action">
+                                <div class="group-radio-button group-radio-button-spe">
+                                    <div class="radio-button">
+                                        <input type="radio" name="ethernet-connection-type" id="ethernet-connection-type-1">
+                                        <label for="ethernet-connection-type-1">@LocalizerHelper.LocalizerResource["Network_RadioButtonList_IPAssignment"].ToString().Split('|')[0]</label>
+                                    </div>
+                                    <div class="radio-button">
+                                        <input type="radio" name="ethernet-connection-type" id="ethernet-connection-type-2">
+                                        <label for="ethernet-connection-type-2">@LocalizerHelper.LocalizerResource["Network_RadioButtonList_IPAssignment"].ToString().Split('|')[1]</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-box hide">
+                        <div class="section-box-header">
+                            <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Network_Title_Details"]</strong></div>
+                        </div>
+                        <form id="frmNetwork">
+                            <div class="section-box-content">
+                                <div class="connection-details">
+                                    <ul class="form-list">
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_IPAddress"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="ipAddress" value="">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_SubnetMask"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="subnetMask" value="">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_Gateway"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="gateway" value="">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="form-action hide">
+                                        <button type="button" class="btn btn-sm btn-ghost btn-default" data-toggle="cancel-value">@LocalizerHelper.LocalizerResource["Common_Button_Cancel"]</button>
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="save-value">@LocalizerHelper.LocalizerResource["Common_Button_Save"]</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-page-level="2" data-id="settings-wifi" class="main-settings wifi-settings hide">
+            <ul class="breadcrumb">
+                <li>@LocalizerHelper.LocalizerResource["Header_Title_Network"]</li>
+                <li>@LocalizerHelper.LocalizerResource["Network_Title_Wifi"]</li>
+            </ul>
+            <div class="main-box">
+                <div class="main-box-header">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <icon class="icon icon-md icon-first icon-wifi"></icon>
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Network_Title_Wifi"]</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-box-body">
+                    <div class="section-box my-networks hide">
+                        <div class="section-box-header">
+                            <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Network_Label_MyNetworks"]</strong></div>
+                        </div>
+                        <div class="section-box-content">
+                            <div class="box-wrap box-wrap-sm" data-toggle="settings-wifi-network">
+                                <div class="box-left" id="myWifi">
+                                </div>
+                                <div class="box-right">
+                                    <div class="box-status"></div>
+                                    <icon class="icon icon-sm icon-arrow-right-gray"></icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-box available-networks">
+                        <div class="section-box-content">
+                            <ul class="list-networks customized-scroll" id="wifiList">
+                                <li class="add-network"><icon class="icon icon-sm icon-add"></icon><span>@LocalizerHelper.LocalizerResource["Network_Title_AddNetwork"]</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-page-level="3" class="main-settings wifi-network-settings hide">
+            <ul class="breadcrumb">
+                <li>@LocalizerHelper.LocalizerResource["Header_Title_Network"]</li>
+                <li>@LocalizerHelper.LocalizerResource["Network_Title_Wifi"]</li>
+                <li id="wifiSSID"></li>
+            </ul>
+            <div class="main-box">
+                <div class="main-box-header">
+                    <div class="box-wrap">
+                        <div class="box-left" id="myWifiDetail">
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-box-body">
+                    <div class="section-box">
+                        <div class="section-box-header">
+                            <div class="section-box-title"><strong>@LocalizerHelper.LocalizerResource["Network_Title_Details"]</strong></div>
+                        </div>
+                        <form id="frmNetworkWifi">
+                            <div class="section-box-content">
+                                <div class="connection-details">
+                                    <ul class="form-list">
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_IPAddress"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="ipAddress_wifi" value="">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_SubnetMask"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="subnetMask_wifi" value="">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-group mini-label">
+                                                <label>@LocalizerHelper.LocalizerResource["Network_Label_Gateway"]</label>
+                                                <input type="text" class="form-control form-line form-number form-disabled" name="gateway_wifi" value="">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="form-action hide">
+                                        <button type="button" class="btn btn-sm btn-ghost btn-default" data-toggle="cancel-value">@LocalizerHelper.LocalizerResource["Common_Button_Cancel"]</button>
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="save-value">@LocalizerHelper.LocalizerResource["Common_Button_Save"]</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-right">
+        <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-primary btn-next-step" data-link="/@Configuration.ISMVirtualPath/Setting/Camera">
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 2</span>
+                <icon class="icon icon-next"></icon>
+            </button>
+        </div>         
+    </div>
+</main>
+<div class="bottom-action">
+    <button class="btn btn-default btn-ghost btn-help" title="Language" data-toggle="need-help">
+        <icon class="icon icon-lg icon-help"></icon>
+        <span>@LocalizerHelper.LocalizerResource["Common_Label_NeedHelp"]</span>
+    </button>
+</div>
+<section class="panel panel-right panel-help">
+    <div class="panel-content">
+        <div class="panel-header">
+            <div class="panel-header-left">
+                <div class="panel-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Help"]</div>
+            </div>
+            <div class="panel-header-right">
+                <button class="btn btn-icon btn-default" data-toggle="close-panel">
+                    <icon class="icon icon-md icon-close-gray"></icon>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body customized-scroll">
+            <div class="section-help-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Top_Question"]</div>
+            <div class="section-help-content">
+                <ul class="top-question-list">
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Network_Q1"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Network_Q1_Answer1"]</h5>
+                            <ol class="lower-alpha">
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q1_Answer1_1"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q1_Answer1_2"]</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Network_Q2"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer1"]</h5>
+                            <ol class="lower-alpha">
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer1_1"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer1_2"]</li>
+                            </ol>
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2"]</h5>
+                            <p>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1"]</p>
+                            <ol class="decimal">
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1_1"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1_2"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1_3"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1_4"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Network_Q2_Answer2_1_5"]</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Network_Q3"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Network_Q3_Answer1_Desc1"]</h5>
+                            <p>@LocalizerHelper.LocalizerResource["Help_Network_Q3_Answer1_Desc2"]</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-us">
+                <p>@LocalizerHelper.LocalizerResource["Help_Common_Desc_ContactUs"]</p>
+                <ul>
+                    <li>
+                        <icon class="icon icon-xs icon-tel"></icon>
+                        <span>@Configuration.SupportLine.Replace("-", " - ")</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="simple-keyboard"></div>
+<section class="modal modal-xl modal-edit modal-security-key" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-link btn-primary" data-toggle="close-modal">Cancel</button>
+                <button type="button" class="btn btn-link btn-primary btn-disabled" data-toggle="save-security-key">Save</button>
+            </div>
+			<div class="modal-body">
+                <ul class="list-parameters">
+                    <li>
+                        <div class="title">Enter the Network Security Key <sup class="text-red">*</sup></div>
+                        <div class="content">
+                            <div class="form-group">
+                                <input type="password" class="form-control form-line" placeholder="Enter Security Key" value="">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="modal modal-xl modal-edit modal-add-network" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-fixed-size btn-link btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_Cancel"]</button>
+                <div class="modal-title">@LocalizerHelper.LocalizerResource["Network_Title_AddNetwork"]</div>
+                    <button type="button" class="btn btn-fixed-size btn-link btn-primary btn-disabled" data-toggle="save-network">@LocalizerHelper.LocalizerResource["Common_Button_Save"]</button>
+            </div>
+            <div class="modal-body">
+                <form id="frmAddNetwork">
+                    <ul class="list-parameters">
+                        <li>
+                            <div class="title">@LocalizerHelper.LocalizerResource["Network_Label_NetworkName"] <sup class="text-red">*</sup></div>
+                            <div class="content">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-line ignore" placeholder="@LocalizerHelper.LocalizerResource["Network_Placeholder_EnterName"]" name="wifi_ssid" id='wifi_ssid' value="">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="title">@LocalizerHelper.LocalizerResource["Network_Label_SecurityType"] <span class="text-red">*</span></div>
+                            <div class="content">
+                                <div class="group-radio-button group-radio-button-spe">
+                                    @if (enumSecurityTypes != null && enumSecurityTypes.Any())
+                                    {
+                                        @foreach (KeyValuePair<string, string> item in enumSecurityTypes)
+                                        {                                            
+                                            <div class="radio-button">
+                                                <input type="radio" name="security-type" id="security-type-@item.Key" data-security-type="@(GetDescription((SecurityType)Convert.ToInt32(item.Key)))">
+                                                <label for="security-type-@item.Key">@item.Value</label>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                        <li class="form-security-key hide">
+                            <div class="title">@LocalizerHelper.LocalizerResource["Network_Label_SecurityKey"] <sup class="text-red">*</sup></div>
+                            <div class="content">
+                                <div class="form-group form-password">
+                                    <input type="password" class="form-control form-line ignore" placeholder="@LocalizerHelper.LocalizerResource["Network_Placeholder_EnterKey"]" name="wifi_key" id="wifi_key" value="">
+								    <button type="button" class="btn btn-icon btn-default btn-toggle-password">
+                                    	<icon class="icon icon-sm icon-eye-on"></icon>
+                                	</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal modal-xl modal-message modal-message-fail" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-pic"><icon class="icon icon-xxl icon-alert"></icon></div>
+            </div>
+            <div class="modal-body text-center">
+                <div class="modal-message-tit">@LocalizerHelper.LocalizerResource["Common_Error_ConfigFailed"]</div>
+                <p class="modal-message-content"></p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal modal-xl modal-message modal-message-warning" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-pic"><icon class="icon icon-xl icon-warning"></icon></div>
+            </div>
+            <div class="modal-body text-center">                    
+                <p class="modal-message-content"></p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" id="hidVisionConfigNetworkSection" value="@ViewData["VisionConfigNetworkSection"]" />
+<input type="hidden" id="hidStepStatus" value="@ViewData["StepStatus"]" />
+<input type="hidden" id="hidConfigMode" value="@configMode" />
+</body>
+@section Scripts{
+    <script type="text/javascript" src="~/js/network.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Network.init();
+        });
+    </script>
+}

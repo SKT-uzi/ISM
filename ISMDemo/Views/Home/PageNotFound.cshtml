@@ -1,0 +1,35 @@
+﻿@using ISMDemo.Utilities
+@{
+    Layout = "InfoLayout";
+}
+
+<main>
+    <div class="error-wrap">
+        <div class="error-pic">
+            <div class="error-number">404</div>
+        </div>
+        <div class="error-title">@LocalizerHelper.LocalizerResource["PageNotFound_Title"]</div>
+        <div class="error-content">
+            @Html.Raw(LocalizerHelper.LocalizerResource["PageNotFound_Desc_1"])<br/>@Html.Raw(LocalizerHelper.LocalizerResource["PageNotFound_Desc_2"])
+        </div>
+        <div class="error-action">
+            <button class="btn btn-ghost btn-md btn-default" onclick="history.back(-1)">@LocalizerHelper.LocalizerResource["Common_Button_GoBack"]</button>
+            <button class="btn btn-md btn-primary btn-go-home">@LocalizerHelper.LocalizerResource["PageNotFound_Button_GoHome"]</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(function () {
+        // Go back to Home
+        $(document).delegate(".btn-go-home", "click", function () {
+            var isIframeEmbedded = window.self != window.top ? true : false;
+
+            if (isIframeEmbedded) {
+                parent.postMessage("HideSystemSettings", "*");
+            } else {
+                window.location.href = "/" + $("#hidISMVPath").val() + "/Home/Welcome";
+            }
+        });
+    });
+</script>

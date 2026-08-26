@@ -1,0 +1,178 @@
+{
+  "EthernetAutoSuccess": {
+    "method": "response",
+    "type": "ethernet",
+    "args": "auto",
+    "value": {
+      "status": "success",
+      "ip": "192.168.0.38",
+      "subnetmask": "255.255.255.0",
+      "gateway": "192.168.0.1",
+      "errorMessage": ""
+    }
+  },
+  "EthernetAutoError": {
+    "method": "response",
+    "type": "ethernet",
+    "args": "auto",
+    "value": {
+      "status": "error",
+      "ip": "",
+      "subnetmask": "",
+      "gateway": "",
+      "errorMessage": "error"
+    }
+  },
+  "EthernetManualAddSuccess": {
+    "method": "response",
+    "type": "ethernet",
+    "args": "manual",
+    "value": {
+      "status": "success",
+      "errorMessage": ""
+    }
+  },
+  "EthernetManualAddError": {
+    "method": "response",
+    "type": "ethernet",
+    "args": "manual",
+    "value": {
+      "status": "error",
+      "errorMessage": "error"
+    }
+  },
+
+  "WirelessConnectSuccess": {
+    "method": "response",
+    "type": "wireless",
+    "args": "connect",
+    "value": {
+      "status": "success",
+      "errorMessage": ""
+    }
+  },
+  "WirelessConnectError": {
+    "method": "response",
+    "type": "wireless",
+    "args": "connect",
+    "value": {
+      "status": "error",
+      "errorMessage": "error"
+    }
+  },
+
+  "WirelessAutoSuccess": {
+    "method": "response",
+    "type": "wireless",
+    "args": "auto",
+    "value": {
+      "status": "success",
+      "ssid": "Test_Wifi_1",
+      "ip": "192.168.0.38",
+      "subnetmask": "255.255.255.0",
+      "gateway": "192.168.0.1",
+      "errorMessage": ""
+    }
+  },
+  "WirelessAutoError": {
+    "method": "response",
+    "type": "wireless",
+    "args": "auto",
+    "value": {
+      "status": "error",
+      "ip": "",
+      "subnetmask": "",
+      "gateway": "",
+      "errorMessage": "error"
+    }
+  },
+
+  "CameraStartLiveSuccess": {
+    "method": "response",
+    "type": "camera",
+    "args": "startlive",
+    "value": {
+      "status": "success",
+      "errorMessage": ""
+    }
+  },
+  "CameraStartLiveError": {
+    "method": "response",
+    "type": "camera",
+    "args": "startlive",
+    "value": {
+      "status": "error",
+      "errorMessage": "error"
+    }
+  },
+
+  "LFEIDScanBluetoothSuccess": {
+    "method": "response",
+    "type": "LFEID",
+    "args": "scanbluetooth",
+    "value": {
+      "list": [
+        {
+          "deviceName": "Headphones-1",
+          "macAddress": "00-09-0F-FW-00-01"
+        },
+        {
+          "deviceName": "Headphones-2",
+          "macAddress": " 00-09-0F-FE-00-02"
+        },
+        {
+          "deviceName": "Headphones-3",
+          "macAddress": " 00-09-0F-FE-00-03"
+        }
+      ],
+      "status": "success",
+      "errorMessage": ""
+    }
+  },
+  "LFEIDScanBluetoothError": {
+    "method": "response",
+    "type": "LFEID",
+    "args": "scanbluetooth",
+    "value": {
+      "list": [],
+      "status": "error",
+      "errorMessage": "error"
+    }
+  },
+
+  "LFEIDConnectBluetoothSuccess": {
+    "method": "response",
+    "type": "LFEID",
+    "args": "connectbluetooth",
+    "value": {
+      "status": "success",
+      "errorMessage": ""
+    }
+  },
+  "LFEIDConnectBluetoothError": {
+    "method": "response",
+    "type": "LFEID",
+    "args": "connectbluetooth",
+    "value": {
+      "status": "error",
+      "errorMessage": "error"
+    }
+  },
+  "LFEIDReadBaudRateSuccess": {
+    "type": "LFEID",
+    "value": {
+      "status": "success",
+      "reader": "964001046781704",
+      "errorMessage": "",
+      "baud": 9600
+    }
+  },
+  "LFEIDReadBaudRateError": {
+    "type": "LFEID",
+    "value": {
+      "status": "error",
+      "reader": "",
+      "errorMessage": "error"
+    }
+  }
+}

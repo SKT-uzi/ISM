@@ -1,0 +1,43 @@
+﻿@using ISMDemo.Utilities
+@{
+    Layout = "LoginLayout";
+}
+<main>
+    <div class="enter-code">
+        <div class="enter-code-top">
+            <div class="code-name">@LocalizerHelper.LocalizerResource["Login_Title_CattleSortingConfigSystem"]</div>
+            <div class="code-title">@LocalizerHelper.LocalizerResource["Password_Desc_EnterPassword"]</div>
+            <div class="code-wrap">
+                <div class="code-view">
+                    <i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <input type="password" class="form-code hide">
+            </div>
+        </div>
+        <div class="enter-code-bottom">
+            <ul class="keyboard">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li class="invisible"></li>
+                <li>0</li>
+                <li class="spe cancel">@LocalizerHelper.LocalizerResource["Common_Button_Cancel"]</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/login.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Login.init();
+        });
+    </script>
+}

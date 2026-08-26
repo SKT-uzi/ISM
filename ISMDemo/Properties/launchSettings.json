@@ -1,0 +1,52 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:32614",
+      "sslPort": 54333
+    }
+  },
+  "profiles": {
+    "ChuteSideISMWebApp": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:8101;http://localhost:5201",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "IOTEDGE_RUNTIME_FILE_PATH": "E:\\RuntimeFiles\\ISMDemo",
+        "IOTEDGE_DEVICEID": "Device -- 01",
+        "IOTEDGE_MODULEID": "ChuteSideAndDataSync",
+        "IOTEDGE_MQTT_USER": "local-dev-user",
+        "IOTEDGE_MQTT_PASSWORD": "local-dev-password",
+        "CHUTE_SIDE_APP_SUPPORTED_CULTURES": "en-us,es-mx",
+        "CHUTE_SIDE_APP_DES_SECURITYKEY": "local-dev-only-key",
+        "VISION_CONFIG_FILE_PATH": "E:\\RuntimeFiles\\ISMDemo\\data\\ism_config.json",
+        "ISM_VIRTUAL_PATH": "ism"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "IOTEDGE_RUNTIME_FILE_PATH": "E:\\RuntimeFiles\\ISMDemo",
+        "IOTEDGE_DEVICEID": "Device -- 01",
+        "IOTEDGE_MODULEID": "ChuteSideAndDataSync",
+        "IOTEDGE_MQTT_USER": "local-dev-user",
+        "IOTEDGE_MQTT_PASSWORD": "local-dev-password",
+        "CHUTE_SIDE_APP_SUPPORTED_CULTURES": "en-us,es-mx",
+        "CHUTE_SIDE_APP_DES_SECURITYKEY": "local-dev-only-key",
+        "VISION_CONFIG_FILE_PATH": "E:\\RuntimeFiles\\ISMDemo\\data\\ism_config.json",
+        "ISM_VIRTUAL_PATH": "ism"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true
+    }
+  }
+}

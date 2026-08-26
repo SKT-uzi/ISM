@@ -1,0 +1,149 @@
+﻿@using ISMDemo.Utilities
+@{
+    Layout = "CommonLayout";
+}
+<body class="system-settings dashboard">
+    <main class="loading2">
+        <div class="card-box-wrap">
+            <div class="card-box" data-link="/@Configuration.ISMVirtualPath/Setting/Network">
+                <icon class="icon icon-xl icon-network-white" id="network-icon"></icon>
+                <div class="card-box-content">
+                    <ul class="connection-group">
+                        <li>
+                            <div class="connection-wrap">
+                                <div class="connection-item">@LocalizerHelper.LocalizerResource["Network_Title_Ethernet"]</div>
+                                <div class="connection-type">
+                                    <icon class="icon icon-sm icon-cable-tag enable"></icon>
+                                </div>
+                                <div id="ethernet-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="connection-wrap">
+                                <div class="connection-item show-wifi-name">
+                                    <span>@LocalizerHelper.LocalizerResource["Network_Title_Wifi"]</span>
+                                    <small id="ssid"></small>
+                                </div>
+                                <div class="connection-type">
+                                    <icon class="icon icon-sm icon-wifi-tag enable"></icon>
+                                </div>
+                                <div id="wifi-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-box" data-link="/@Configuration.ISMVirtualPath/Setting/Scale">
+                <icon class="icon icon-xl icon-scale-white" id="scale-icon"></icon>
+                <div class="card-box-content">
+                    <ul class="connection-group">
+                        <li>
+                            <div class="connection-wrap">
+                                <div class="connection-type">
+                                    <icon class="icon icon-sm icon-cable-tag enable"></icon>
+                                </div>
+                                <div id="scale-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-box" data-link="/@Configuration.ISMVirtualPath/Setting/EID">
+                <icon class="icon icon-xl icon-eid-white" id="EID-icon"></icon>
+                <div class="card-box-content">
+                    <ul class="connection-group">
+                        <li>
+                            <div class="connection-wrap">
+                                <div class="connection-item">@LocalizerHelper.LocalizerResource["Overview_Label_LFEID"]</div>
+                                <div class="connection-type">
+                                    <icon class="icon icon-sm icon-bluetooth-tag enable"></icon>
+                                </div>                                
+                                <div id="LFEID-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="connection-wrap">
+                                <div class="connection-item">@LocalizerHelper.LocalizerResource["Overview_Label_UHFEID"]</div>
+                                <div class="connection-type">
+                                    <icon class="icon icon-sm icon-cable-tag enable"></icon>
+                                </div>
+                                <div id="UHFEID-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-box" data-link="/@Configuration.ISMVirtualPath/Setting/Camera">
+                <icon class="icon icon-xl icon-camera-white" id="camera-icon"></icon>
+                <div class="card-box-content">
+                    <ul class="connection-group">
+                        <li>
+                            <div class="connection-wrap">
+	                            <div class="connection-type">
+	                                <icon class="icon icon-sm icon-cable-tag enable"></icon>
+	                            </div>
+	                            <div id="camera-status" class="connection-state"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>			
+            <div class="card-box card-box-l card-box-spe">
+             <div class="card-box-title">@LocalizerHelper.LocalizerResource["Live_Data"]</div>
+	            <ul class="list-chart-info">
+	                <li>
+	                    <div class="top"><strong class="live-weight">--</strong></div>
+	                    <div class="bottom">@LocalizerHelper.LocalizerResource["Live_Data_Weight"]</div>
+	                </li>
+	                <li>
+	                    <div class="top"><strong class="live-lf-eid">--</strong></div>
+	                    <div class="bottom">@LocalizerHelper.LocalizerResource["Live_Data_LF_EID"]</div>
+	                </li>
+	                <li>
+                        <div class="top"><strong class="live-uhf-eid">--</strong></div>
+                        <div class="bottom">@LocalizerHelper.LocalizerResource["Live_Data_UHF_EID"]</div>
+	                </li>
+                </ul>
+            </div>
+            <div class="card-box">
+                <ul class="list-device-info">
+                    <li>
+                        <span>@LocalizerHelper.LocalizerResource["Device_Uptime"]</span>
+                        <strong id="device-uptime"></strong>
+                    </li>
+                    <li>
+                        <span>@LocalizerHelper.LocalizerResource["Common_Label_CustomerName"]</span>
+                        <strong id="customer-name">@ViewData["LocationName"]</strong>
+                    </li>
+                    <li>
+                        <span>@LocalizerHelper.LocalizerResource["Common_Label_DeviceID"]</span>
+                        <strong id="device-id">@ViewData["DeviceID"]</strong>
+                    </li>
+	                <li class="spe">
+                        <span>@LocalizerHelper.LocalizerResource["Common_Label_DeviceIP"]</span>
+                        <ul class="ul-device-ip">
+	                        <li class="connection-type">
+	                            <icon class="icon icon-sm icon-cable-tag enable"></icon>
+                                <strong id="ethernet-ip">@LocalizerHelper.LocalizerResource["Common_Label_None"]</strong>
+	                        </li>
+	                        <li class="connection-type">
+	                            <icon class="icon icon-sm icon-wifi-tag enable"></icon>
+                                <strong id="wireless-ip">@LocalizerHelper.LocalizerResource["Common_Label_None"]</strong>
+	                        </li>
+	                    </ul>
+	                </li>					
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+<input type="hidden" id="hidVisionConfigNetworkSection" value="@ViewData["VisionConfigNetworkSection"]" />
+@section Scripts{
+    <script type="text/javascript" src="~/js/overview.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Overview.init();
+        });
+    </script>
+}

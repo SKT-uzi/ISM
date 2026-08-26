@@ -1,0 +1,169 @@
+﻿@using ISMDemo.Utilities
+@using Microsoft.AspNetCore.Http
+@{
+    Layout = "CommonLayout";
+    string systemSettings = String.Empty;
+    string hideStep = String.Empty;
+    string configMode = Context.Session.GetString(Const.SESSION_CONFIG_MODE_NAME);
+    switch (configMode)
+    {
+        case Const.CONST_CONFIG_INIT:
+            systemSettings = String.Empty;
+            hideStep = String.Empty;
+            break;
+        case Const.CONST_CONFIG_UPDATE:
+            systemSettings = "system-settings";
+            hideStep = "hide";
+            break;
+    }
+}
+
+<body class="@systemSettings">
+<main class="loading2">
+    <div class="main-left">
+        <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-default btn-previous-step" data-link="/@Configuration.ISMVirtualPath/Setting/Network">
+                <icon class="icon icon-back"></icon>
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 1</span>
+            </button>
+        </div>
+    </div>
+    <div class="main-center">
+        <div data-page-level="1" class="main-status camera-status mt-m">
+            <div class="status-wrap">
+                <icon class="status-icon icon icon-xxl icon-camera"></icon>
+                <div class="status-title"></div>
+                <div class="status-description"></div>
+            </div>
+            <ul class="box-list">
+                <li data-toggle="settings-camera">
+                    <div class="box-wrap">
+                        <div class="box-left">
+                            <icon class="icon icon-sm icon-first icon-checkmark-circle checked-status"></icon>
+                            <div class="box-item">@LocalizerHelper.LocalizerResource["Camera_Title_Alignment"]</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="box-status"></div>
+                            <icon class="icon icon-sm icon-last icon-arrow-right-gray"></icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-right">
+        <div class="@hideStep">
+                <button data-page-level="1" type="button" class="btn btn-circle btn-primary btn-next-step" data-link="/@Configuration.ISMVirtualPath/Setting/Scale">
+                <span>@LocalizerHelper.LocalizerResource["Common_NavigateButton_Step"] 3</span>
+                <icon class="icon icon-next"></icon>
+            </button>
+        </div>
+    </div>
+</main>
+<div class="bottom-action">
+    <button class="btn btn-default btn-ghost btn-help" title="Language" data-toggle="need-help">
+        <icon class="icon icon-lg icon-help"></icon>
+        <span>@LocalizerHelper.LocalizerResource["Common_Label_NeedHelp"]</span>
+    </button>
+</div>
+<section class="panel panel-right panel-help">
+    <div class="panel-content">
+        <div class="panel-header">
+            <div class="panel-header-left">
+                <div class="panel-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Help"]</div>
+            </div>
+            <div class="panel-header-right">
+                <button class="btn btn-icon btn-default" data-toggle="close-panel">
+                    <icon class="icon icon-md icon-close-gray"></icon>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body customized-scroll">
+            <div class="section-help-title">@LocalizerHelper.LocalizerResource["Help_Common_Title_Top_Question"]</div>
+            <div class="section-help-content">
+                <ul class="top-question-list">
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Camera_Q1"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                            <ol class="lower-alpha">
+                            <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q1_Answer1"]</li>
+                            <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q1_Answer2"]</li>
+                            <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q1_Answer3"]</li>
+                            <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q1_Answer4"]</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Camera_Q2"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                            <ol class="lower-alpha">
+                                <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q2_Answer1"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q2_Answer2"]</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="top-question-desc">
+                            <span>@LocalizerHelper.LocalizerResource["Help_Camera_Q3"]</span>
+                            <icon class="icon icon-arrow-down"></icon>
+                        </div>
+                        <div class="top-question-answer">
+                            <h5>@LocalizerHelper.LocalizerResource["Help_Common_Desc_Check"]</h5>
+                            <ol class="lower-alpha">
+                                <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q3_Answer1"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q3_Answer2"]</li>
+                                <li>@LocalizerHelper.LocalizerResource["Help_Camera_Q3_Answer3"]</li>
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-us">
+                <p>@LocalizerHelper.LocalizerResource["Help_Common_Desc_ContactUs"]</p>
+                <ul>
+                    <li>
+                        <icon class="icon icon-xs icon-tel"></icon>
+                        <span>@Configuration.SupportLine.Replace("-", " - ")</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal modal-xl modal-message modal-message-fail" data-bind="animationIn:fadeInDown10,animationOut:fadeOutUp10">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-pic"><icon class="icon icon-xxl icon-alert"></icon></div>
+            </div>
+            <div class="modal-body text-center">
+                <div class="modal-message-tit">@LocalizerHelper.LocalizerResource["Common_Error_ConfigFailed"]</div>
+                <p class="modal-message-content"></p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-md btn-primary" data-toggle="close-modal">@LocalizerHelper.LocalizerResource["Common_Button_GotIt"]</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<input type="hidden" id="hidVisionConfigCameraSection" value="@ViewData["VisionConfigCameraSection"]" />
+<input type="hidden" id="hidStepStatus" value="@ViewData["StepStatus"]" />
+</body>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/camera.js" asp-append-version="true"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Camera.init();
+        });
+    </script>
+}

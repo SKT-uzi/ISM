@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "InfoLayout";
+}
+
+<main>
+    <div class="error-wrap">
+        <div class="error-pic">
+            <div class="error-number">401</div>
+        </div>
+        <div class="error-title">@LocalizerHelper.LocalizerResource["UnAuth_Title"]</div>
+        <div class="error-content">
+            @Html.Raw(LocalizerHelper.LocalizerResource["UnAuth_Desc_1"])<br/>@Html.Raw(LocalizerHelper.LocalizerResource["UnAuth_Desc_2"])
+        </div>
+        <div class="error-action">
+            <button class="btn btn-md btn-primary" onclick="javascript:location.href='@Url.Action("SignOut", "Home")'">@LocalizerHelper.LocalizerResource["UnAuth_Button_GoLogin"]</button>
+        </div>
+    </div>
+</main>
