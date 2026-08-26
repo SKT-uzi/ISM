@@ -169,20 +169,20 @@ namespace ISMSimulator
 
             _mqttClient.ConnectedAsync += async e =>
             {
-                AddTraceLog($"已连接到 MQTT 服务器: {server}");
+                AddTraceLog($"Connected to the MQTT server: {server}");
                 await Task.CompletedTask;
             };
 
             _mqttClient.DisconnectedAsync += async e =>
             {
-                AddTraceLog($" 已断开与 MQTT 服务器的连接");
+                AddTraceLog("Disconnected from the MQTT server");
                 await Task.CompletedTask;
             };
 
             _mqttClient.ApplicationMessageReceivedAsync += async e =>
             {
                 var message = e.ApplicationMessage.ConvertPayloadToString();
-                AddTraceLog($"收到消息: {message}");
+                AddTraceLog($"Message received: {message}");
                 await HandleReceivedMessage(message);
                 await Task.CompletedTask;
             };
@@ -197,7 +197,7 @@ namespace ISMSimulator
             }
             catch (Exception ex)
             {
-                AddTraceLog($"连接失败: {ex.Message}");
+                AddTraceLog($"Connection failed: {ex.Message}");
             }
         }
 
@@ -222,7 +222,7 @@ namespace ISMSimulator
                     TopicFilters = new List<MqttTopicFilter> { topicFilter }
                 });
 
-                AddTraceLog($"已订阅主题: {topic}");
+                AddTraceLog($"Subscribed to topic: {topic}");
             }
         }
 
@@ -238,7 +238,7 @@ namespace ISMSimulator
                     .Build();
 
                 await _mqttClient.PublishAsync(mqttMessage, CancellationToken.None);
-                AddTraceLog($"已发布消息到主题 {topic}: {message}");
+                AddTraceLog($"Published message to topic {topic}: {message}");
             }
         }
 
